@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/redactlePL/static/css/main.9071bff3.css",
+    "main.js": "/redactlePL/static/js/main.200e0db1.js",
+    "static/js/787.3b16296f.chunk.js": "/redactlePL/static/js/787.3b16296f.chunk.js",
+    "index.html": "/redactlePL/index.html",
+    "main.9071bff3.css.map": "/redactlePL/static/css/main.9071bff3.css.map",
+    "main.200e0db1.js.map": "/redactlePL/static/js/main.200e0db1.js.map",
+    "787.3b16296f.chunk.js.map": "/redactlePL/static/js/787.3b16296f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9071bff3.css",
+    "static/js/main.200e0db1.js"
+  ]
+}
