@@ -1,21 +1,27 @@
-import {Card, Container} from "@mui/material";
+import {Box, Card, Container} from "@mui/material";
 import { styled } from '@mui/material/styles';
 
-const MainSection = styled(Card)(
+const StyledBox = styled(Box)(
     ({theme}) => `
   display: flex;
   flex-direction: row;
-  background-color: ${theme.palette.primary.main}
+  height: 90vh;
+  justify-content: space-between;
+  background-color: ${theme.palette.primary.main};
 `);
+
+const StyledCard = styled(Card)`
+  flex-basis: 50%;
+`
 
 const Game = () => {
     return (
         <>
             <header> redactle, info, stats, settings</header>
-            <MainSection>
-                <Card>article</Card>
-                <Card>guess list</Card>
-            </MainSection>
+            <StyledBox>
+                <StyledCard>article</StyledCard>
+                <StyledCard>guess list</StyledCard>
+            </StyledBox>
             <footer>search bar</footer>
         </>
     )
