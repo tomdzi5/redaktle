@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/redactlePL/static/css/main.9071bff3.css",
-    "main.js": "/redactlePL/static/js/main.200e0db1.js",
-    "static/js/787.3b16296f.chunk.js": "/redactlePL/static/js/787.3b16296f.chunk.js",
-    "index.html": "/redactlePL/index.html",
-    "main.9071bff3.css.map": "/redactlePL/static/css/main.9071bff3.css.map",
-    "main.200e0db1.js.map": "/redactlePL/static/js/main.200e0db1.js.map",
-    "787.3b16296f.chunk.js.map": "/redactlePL/static/js/787.3b16296f.chunk.js.map"
+    "main.css": "https://redaktle.pl/static/css/main.9071bff3.css",
+    "main.js": "https://redaktle.pl/static/js/main.93d173f7.js",
+    "static/js/787.3b16296f.chunk.js": "https://redaktle.pl/static/js/787.3b16296f.chunk.js",
+    "index.html": "https://redaktle.pl/index.html",
+    "main.9071bff3.css.map": "https://redaktle.pl/static/css/main.9071bff3.css.map",
+    "main.93d173f7.js.map": "https://redaktle.pl/static/js/main.93d173f7.js.map",
+    "787.3b16296f.chunk.js.map": "https://redaktle.pl/static/js/787.3b16296f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9071bff3.css",
-    "static/js/main.200e0db1.js"
+    "static/js/main.93d173f7.js"
   ]
 }
