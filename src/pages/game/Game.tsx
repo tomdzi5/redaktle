@@ -1,10 +1,12 @@
 import {Card, Container} from "@mui/material";
 import { styled } from '@mui/material/styles';
 
-const MainSection = styled(Card)`
+const MainSection = styled(Card)(
+    ({theme}) => `
   display: flex;
   flex-direction: row;
-`;
+  background-color: ${theme.palette.primary.main}
+`);
 
 const Game = () => {
     return (

@@ -3,11 +3,15 @@ import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
 import Game from "./pages/game/Game";
+import { theme } from './app/theme';
+import {ThemeProvider} from "@mui/material";
 
 function App() {
   return (
     <div className="App">
-      <Game />
+        <ThemeProvider theme={theme}>
+            <Game />
+        </ThemeProvider>
     </div>
   );
 }
