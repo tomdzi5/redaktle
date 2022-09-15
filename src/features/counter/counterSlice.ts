@@ -76,7 +76,7 @@ export const incrementIfOdd =
   (amount: number): AppThunk =>
   (dispatch, getState) => {
     const currentValue = selectCount(getState());
-    if (currentValue % 2 === 1) {
+    if (currentValue % 2 === 1 || currentValue % 2 === -1) {
       dispatch(incrementByAmount(amount));
     }
   };

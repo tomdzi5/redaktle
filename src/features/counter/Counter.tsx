@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
@@ -11,6 +12,12 @@ import {
 } from './counterSlice';
 import styles from './Counter.module.css';
 
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`;
+
 export function Counter() {
   const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
@@ -21,6 +28,7 @@ export function Counter() {
   return (
     <div>
       <div className={styles.row}>
+        <Title>tytul</Title>
         <button
           className={styles.button}
           aria-label="Decrement value"
