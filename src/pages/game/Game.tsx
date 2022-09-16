@@ -17,7 +17,7 @@ const StyledCard = styled(Card)`
 const Game = () => {
     return (
         <>
-            <header> redactle, info, stats, settings</header>
+            <header> Redaktle, info, stats, settings</header>
             <StyledBox>
                 <StyledCard>article</StyledCard>
                 <StyledCard>guess list</StyledCard>
