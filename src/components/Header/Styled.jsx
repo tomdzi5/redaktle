@@ -1,4 +1,4 @@
-import { AppBar, Box } from "@mui/material";
+import { AppBar, Box, Drawer } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const StyledAppBar = styled(AppBar)(
@@ -17,7 +17,7 @@ export const StyledAppBar = styled(AppBar)(
 
 export const StyledLinkContainer = styled(Box)(
   () => `
-    display: flex;
+    display: none;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
