@@ -1,5 +1,6 @@
 import {Box, Card, Container} from "@mui/material";
 import { styled } from '@mui/material/styles';
+import Article from "../../components/article/Article";
 
 const StyledBox = styled(Box)(
     ({theme}) => `
@@ -19,7 +20,7 @@ const Game = () => {
         <>
             <header> Redaktle, info, stats, settings</header>
             <StyledBox>
-                <StyledCard>article</StyledCard>
+                <Article article={{title: 'article title', text: 'text'}}/>
                 <StyledCard>guess list</StyledCard>
             </StyledBox>
             <footer>search bar</footer>
