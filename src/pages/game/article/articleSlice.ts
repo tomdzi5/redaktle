@@ -1,8 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import { fetchArticle } from '../../../services/apiService';
-import { LOADING_STATUS } from "../../../utils/constants";
-import { RootState } from "../../../app/store";
-import { counterSlice } from "../../../features/counter/counterSlice";
+import { fetchArticle } from '@/services/apiService';
+import { LOADING_STATUS } from '@/utils/constants';
+import { RootState } from '@/app/store';
 
 const initialState = {
     data: {

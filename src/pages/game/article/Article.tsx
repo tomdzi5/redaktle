@@ -1,12 +1,7 @@
-import {Card, CardContent, Typography} from "@mui/material";
-import { ArticleType } from '../../../types/article';
+import { Card, CardContent, Typography } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { getArticle, selectArticle } from './articleSlice';
 import { useEffect } from 'react';
-
-type ArticleProps = {
-    article: ArticleType
-}
 
 const Article = () => {
     const article = useAppSelector(selectArticle);
