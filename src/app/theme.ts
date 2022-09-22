@@ -11,8 +11,15 @@ export const theme = createTheme({
     },
     typography: {
         h2: {
-            fontSize: 'calc(1.375rem + 1.5vw)',
+            fontSize: '1.8em',
             textAlign: 'left',
+            lineHeight: '1.3',
+            fontFamily: `'Linux Libertine','Georgia','Times', serif`,
+            borderBottom: `1px solid #a2a9b1`,
+        },
+        body1: {
+            fontSize: 'calc(1em * 0.875)',
+            lineHeight: '1.6',
         }
     },
 });
