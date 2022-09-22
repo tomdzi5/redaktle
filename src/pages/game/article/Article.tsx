@@ -17,14 +17,14 @@ const Article = () => {
 
     useEffect(() => {
         dispatch(getArticle());
-    }, [])
+    }, []);
 
     return (
         <ArticleCard>
-            <CardContent>
+            <CardContent sx={{ m: 2 }}>
                 { article.status === LOADING_STATUS.IDLE && <>
-                    <Typography variant="h2">{article.data.title}</Typography>
-                    <div>{article.data.text}</div>
+                    <Typography variant="h2" sx={{ pb: 2 }}>{article.data.title}</Typography>
+                    <Typography variant="body1" sx={{ textAlign: 'justify' }}>{article.data.text}</Typography>
                 </>}
                 { article.status === LOADING_STATUS.LOADING && <Loader/>}
             </CardContent>

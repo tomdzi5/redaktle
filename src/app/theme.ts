@@ -9,4 +9,10 @@ export const theme = createTheme({
             main: '#edf2ff',
         },
     },
+    typography: {
+        h2: {
+            fontSize: 'calc(1.375rem + 1.5vw)',
+            textAlign: 'left',
+        }
+    },
 });
