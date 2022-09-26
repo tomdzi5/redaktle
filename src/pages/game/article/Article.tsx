@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { getArticle, selectArticle } from './articleSlice';
 import { LOADING_STATUS } from '../../../utils/constants';
 import Loader from '../../../components/Loader';
-import { styled } from '@mui/material/styles';
 
 const ArticleCard = styled(Card)`
   flex-basis: 70%;
