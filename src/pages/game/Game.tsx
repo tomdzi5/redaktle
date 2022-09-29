@@ -1,26 +1,44 @@
 import { Card, Grid } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import Article from './article/Article';
+import { styled as styledMui } from '@mui/material/styles';
+import styled from 'styled-components';
 
-const StyledGrid = styled(Grid)`
-  height: 90vh;
+import Article from './article/Article';
+import GuessBar from './guess-bar/GuessBar';
+
+const StyledGrid = styledMui(Grid)`
+  height: 100%;
   justify-content: space-between;
 `;
 
-const StyledCard = styled(Card)`
+const StyledCard = styledMui(Card)`
   flex-basis: 30%;
+`
+
+const ArticleCard = styledMui(Card)`
+  flex-basis: 70%;
+`
+
+const GameContainer = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 `
 
 const Game = () => {
     return (
-        <>
-            <header> Redaktle, info, stats, settings</header>
+        <GameContainer>
+            <header>
+                <p>Redaktle, info, stats, settings</p>
+            </header>
             <StyledGrid container sx={{ flexDirection: { xs: "column", md: "row"} }}>
-                <Article />
+                <ArticleCard>
+                    <Article />
+                    <GuessBar />
+                </ArticleCard>
                 <StyledCard>guess list</StyledCard>
             </StyledGrid>
-            <footer>search bar</footer>
-        </>
+        </GameContainer>
     )
 }
 
