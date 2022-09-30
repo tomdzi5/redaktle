@@ -1,6 +1,6 @@
 import { Box, Card, Container } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import Header from "../../components/Header";
+import Header from "../../app/components/Header";
 
 const StyledBox = styled(Box)(
   ({ theme }) => `

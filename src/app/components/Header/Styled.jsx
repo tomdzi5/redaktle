@@ -9,7 +9,7 @@ export const StyledAppBar = styled(AppBar)(
     height: 15%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     background-color: ${theme.palette.primary.main};
   `
@@ -19,9 +19,21 @@ export const StyledLinkContainer = styled(Box)(
   () => `
     display: none;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    width: 20%;
+    width: 50%;
+    height: 100%;
+  `
+);
+
+export const StyledMenuContainer = styled(Box)(
+  () => `
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: left;
+    align-items: center;
+    width: 200px;
     height: 100%;
   `
 );

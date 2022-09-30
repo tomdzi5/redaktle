@@ -11,7 +11,7 @@ const Header = () => {
         <h1>link2</h1>
         <h1>link3</h1>
       </StyledLinkContainer>
-      <CustomMenu />
+      <CustomMenu menuList={links} />
     </StyledAppBar>
   );
 };
