@@ -1,25 +1,32 @@
-import { IconButton, Menu, MenuItem } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import { IconButton, Menu } from "@mui/material";
 import React, { useState } from "react";
-import { StyledMenuContainer } from "./Styled";
+import { MenuContainer, StyledMenuIcon, StyledMenuItem } from "./Styled";
 
 type Props = {
   menuList: string[];
+  onMenuChange: (
+    event: React.MouseEvent<HTMLElement> | React.MouseEvent<HTMLLIElement>,
+    newAligment: string | null
+  ) => void;
 };
 
 const CustomMenu = (props: Props) => {
-  const { menuList } = props;
+  const { menuList, onMenuChange } = props;
   const [anchor, setAnchor] = useState<null | HTMLElement>(null);
   const open = Boolean(anchor);
   const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchor(event.currentTarget);
   };
-  const onCloseHandler = () => {
+  const onCloseHandler = (
+    event: React.MouseEvent<HTMLLIElement>,
+    menuItem: string
+  ) => {
+    onMenuChange(event, menuItem);
     setAnchor(null);
   };
 
   return (
-    <StyledMenuContainer>
+    <MenuContainer>
       <IconButton
         sx={{ display: { sm: "none" } }}
         aria-controls={open ? "header-menu" : undefined}
@@ -27,7 +34,7 @@ const CustomMenu = (props: Props) => {
         aria-extended={open ? "true" : undefined}
         onClick={onClickHandler}
       >
-        <MenuIcon color="inherit" />
+        <StyledMenuIcon color="inherit" />
       </IconButton>
       <Menu
         id="header-menu"
@@ -36,7 +43,10 @@ const CustomMenu = (props: Props) => {
         onClose={onCloseHandler}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
         transformOrigin={{ vertical: "top", horizontal: "center" }}
-        MenuListProps={{ "aria-labelledby": "basic-button" }}
+        MenuListProps={{
+          "aria-labelledby": "header-menu",
+          disablePadding: true,
+        }}
         PaperProps={{
           style: {
             width: 150,
@@ -45,10 +55,12 @@ const CustomMenu = (props: Props) => {
         sx={{ display: { sm: "none" } }}
       >
         {menuList.map((menuItem) => (
-          <MenuItem onClick={onCloseHandler}>{menuItem}</MenuItem>
+          <StyledMenuItem onClick={(event) => onCloseHandler(event, menuItem)}>
+            {menuItem}
+          </StyledMenuItem>
         ))}
       </Menu>
-    </StyledMenuContainer>
+    </MenuContainer>
   );
 };
 
