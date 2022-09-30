@@ -11,6 +11,7 @@ const Header = () => {
     event: React.MouseEvent<HTMLElement> | React.MouseEvent<HTMLLIElement>,
     newAligment: string | null
   ) => {
+    console.log(event);
     setAlignment(newAligment);
   };
 
@@ -31,7 +32,6 @@ const Header = () => {
         ))}
       </LinkContainer>
       <CustomMenu menuList={MENU_LINKS} onMenuChange={onMenuChangeHandler} />
-      
     </HeaderContainer>
   );
 };

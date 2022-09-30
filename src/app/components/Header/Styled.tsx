@@ -10,7 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { styled } from "@mui/material/styles";
 
 export const HeaderContainer = styled(AppBar)(
-  ({ theme }) => `
+  () => `
     position: sticky;
     top: 0;
     width: 100%;
@@ -18,14 +18,14 @@ export const HeaderContainer = styled(AppBar)(
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background: ${theme.palette.primary.main};
+    background: linear-gradient(to bottom,#ffffff 50%,#f6f6f6 100%);
   `
 );
 
 export const Title = styled(Button)(
   ({ theme }) => `
     margin-left: 0.6rem;
-    color: ${theme.palette.secondary.main};
+    color: ${theme.palette.primary.main};
     font-size: 1.4rem;
     font-weight: 700;
   `
@@ -45,18 +45,19 @@ export const LinkContainer = styled(ToggleButtonGroup)(
 
 export const StyledLink = styled(ToggleButton)(
   ({ theme }) => `
-    color: ${theme.palette.secondary.main};
+    color: ${theme.palette.primary.main};
     font-size: 1.3rem;
     line-height: 1.75;
     letter-spacing: 0.02857em;
-    text-transform: uppercase;
     min-width: 64px;
     padding: 6px 8px;
     border: none;
+    border-radius: 0;
+    text-transform: none;
 
     &.Mui-selected{
-      color: ${theme.palette.secondary.contrastText};
-      background: ${theme.palette.primary.light};
+      color: ${theme.palette.primary.contrastText};
+      background: linear-gradient(to bottom,rgba(167,215,249,0) 0,#a7d7f9 100%);
     }
   `
 );
@@ -75,13 +76,20 @@ export const MenuContainer = styled(Box)(
 
 export const StyledMenuIcon = styled(MenuIcon)(
   ({ theme }) => `
-    color: ${theme.palette.secondary.main};
+    color: ${theme.palette.primary.main};
   `
 );
 
 export const StyledMenuItem = styled(MenuItem)(
   ({ theme }) => `
-    color: ${theme.palette.secondary.main};
-    background: ${theme.palette.primary.main};
+    color: ${theme.palette.primary.main};
+    background-color: inherit;
+    font-size: 1.1em;
+    font-family: 'Linux Libertine','Georgia','Times', serif;
+
+    &:hover{
+      color: ${theme.palette.primary.contrastText};
+      background: linear-gradient(to bottom,rgba(167,215,249,0) 0,#a7d7f9 100%);
+    }
   `
 );
