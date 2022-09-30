@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import styled from 'styled-components';
-import { Box, Grid } from '@mui/material';
+import { Box, Button, Grid, TextField } from '@mui/material';
 
 const StyledFooter = styled.footer`
   position: fixed;
@@ -9,19 +10,29 @@ const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: #ffffff;
 `
 
 const GuessBar = () => {
+    const [guessText, setGuessText] = useState('');
+    const handleGuess = () => {
+        console.log(guessText)
+    }
+
     return (
         <StyledFooter>
             <Box>
-
-                    <Grid container spacing={2} justifyContent="center" alignItems="center">
-                        <Grid item xs={12}>
-                            footer2
-                        </Grid>
+                <Grid container spacing={2} justifyContent="center" alignItems="center">
+                    <Grid item xs={12}>
+                        <Button>Top</Button>
+                        <TextField
+                            value={guessText}
+                            onChange={(event) => setGuessText(event.target.value)}
+                            placeholder="Guess"
+                            size="small"/>
+                        <Button type="submit" onClick={handleGuess}>Guess</Button>
                     </Grid>
-
+                </Grid>
             </Box>
         </StyledFooter>
     )
