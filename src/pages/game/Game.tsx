@@ -1,29 +1,25 @@
-import { Box, Card, Container } from "@mui/material";
+import { Box, Card, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import Article from "./article/Article";
 import Header from "../../app/components/Header";
 
-const StyledBox = styled(Box)(
-  ({ theme }) => `
-  display: flex;
-  flex-direction: row;
+const StyledGrid = styled(Grid)`
   height: 90vh;
   justify-content: space-between;
-  background-color: ${theme.palette.primary.main};
-`
-);
+`;
 
 const StyledCard = styled(Card)`
-  flex-basis: 50%;
+  flex-basis: 30%;
 `;
 
 const Game = () => {
   return (
     <>
       <Header />
-      <StyledBox>
-        <StyledCard>article</StyledCard>
+      <StyledGrid container sx={{ flexDirection: { xs: "column", md: "row" } }}>
+        <Article />
         <StyledCard>guess list</StyledCard>
-      </StyledBox>
+      </StyledGrid>
       <footer>search bar</footer>
     </>
   );
