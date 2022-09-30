@@ -1,4 +1,4 @@
-import { Box, Card, Grid } from "@mui/material";
+import { Card, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Article from "./article/Article";
 import Header from "../../app/components/Header";
