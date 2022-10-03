@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { styled } from '@mui/system';
-import { Box, Button, Grid, TextField } from '@mui/material';
+import { Box, Button, Grid, IconButton, InputAdornment, OutlinedInput } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 
 const StyledFooter = styled('footer')(({ theme }) => ({
     position: 'fixed',
@@ -13,9 +14,14 @@ const StyledFooter = styled('footer')(({ theme }) => ({
     backgroundColor: theme.palette.secondary.main,
 }));
 
+const GuessInputField = styled(OutlinedInput)({
+    backgroundColor: 'white',
+    paddingLeft: 0,
+});
+
 type GuessBarProps = {
     onGuess: (guessText: string) => void;
-}
+};
 
 const GuessBar = ({onGuess}: GuessBarProps) => {
     const [guessText, setGuessText] = useState('');
@@ -31,11 +37,22 @@ const GuessBar = ({onGuess}: GuessBarProps) => {
                     <Grid item xs={12}>
                         <form onSubmit={handleGuess}>
                             <Button>Top</Button>
-                            <TextField
+                            <GuessInputField
                                 value={guessText}
                                 onChange={(event) => setGuessText(event.target.value)}
                                 placeholder="Guess"
+                                startAdornment={
+                                    <InputAdornment position="start">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            edge="end"
+                                            onClick={handleGuess}
+                                        >
+                                            <SearchIcon fontSize="small"/>
+                                        </IconButton></InputAdornment>
+                                }
                                 size="small"/>
+
                             <Button type="submit" >Guess</Button>
                         </form>
                     </Grid>
