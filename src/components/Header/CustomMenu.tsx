@@ -1,13 +1,11 @@
 import { IconButton, Menu } from "@mui/material";
 import React, { useState } from "react";
-import { MenuContainer, StyledMenuIcon, StyledMenuItem } from "./Styled";
+import { MenuContainer, StyledMenuIcon, StyledMenuItem } from "./styled";
+import { ModalTypes } from "../../types/modal";
 
 type Props = {
   menuList: string[];
-  onMenuChange: (
-    event: React.MouseEvent<HTMLElement> | React.MouseEvent<HTMLLIElement>,
-    newAligment: string | null
-  ) => void;
+  onMenuChange: (event: {}, newAligment: ModalTypes) => void;
 };
 
 const CustomMenu = (props: Props) => {
@@ -17,16 +15,13 @@ const CustomMenu = (props: Props) => {
   const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchor(event.currentTarget);
   };
-  const onCloseHandler = (
-    event: React.MouseEvent<HTMLLIElement>,
-    menuItem: string
-  ) => {
+  const onCloseHandler = (event: any, menuItem: string) => {
     onMenuChange(event, menuItem);
     setAnchor(null);
   };
 
   return (
-    <MenuContainer>
+    <MenuContainer sx={{ display: { sm: "none" } }}>
       <IconButton
         sx={{ display: { sm: "none" } }}
         aria-controls={open ? "header-menu" : undefined}
@@ -40,7 +35,7 @@ const CustomMenu = (props: Props) => {
         id="header-menu"
         anchorEl={anchor}
         open={open}
-        onClose={onCloseHandler}
+        onClose={(event, menuItem) => onCloseHandler(event, menuItem)}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
         transformOrigin={{ vertical: "top", horizontal: "center" }}
         MenuListProps={{

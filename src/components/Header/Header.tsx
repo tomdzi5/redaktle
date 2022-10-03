@@ -1,16 +1,16 @@
-import { HeaderContainer, LinkContainer, Title, StyledLink } from "./Styled";
+import { HeaderContainer, LinkContainer, Title, StyledLink } from "./styled";
 import CustomMenu from "./CustomMenu";
-import React, { useState } from "react";
+import { useState } from "react";
+import Modals from "../Modals";
+import { ModalTypes } from "../../types/modal";
+import { Typography } from "@mui/material";
 
 const MENU_LINKS = ["Info", "Stats", "Settings"];
 
 const Header = () => {
-  const [alignment, setAlignment] = useState<null | string>(null);
+  const [alignment, setAlignment] = useState<ModalTypes>(null);
 
-  const onMenuChangeHandler = (
-    event: React.MouseEvent<HTMLElement> | React.MouseEvent<HTMLLIElement>,
-    newAligment: string | null
-  ) => {
+  const onMenuChangeHandler = (event: {}, newAligment: ModalTypes) => {
     console.log(event);
     setAlignment(newAligment);
   };
@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <Title onClick={(event) => onMenuChangeHandler(event, null)}>
-        Redactle
+        <Typography>Redactle</Typography>
       </Title>
       <LinkContainer
         sx={{ display: { sm: "flex" } }}
@@ -28,10 +28,13 @@ const Header = () => {
         aria-label="header-menu"
       >
         {MENU_LINKS.map((menuLink) => (
-          <StyledLink value={menuLink}>{menuLink}</StyledLink>
+          <StyledLink value={menuLink}>
+            <Typography>{menuLink}</Typography>
+          </StyledLink>
         ))}
       </LinkContainer>
       <CustomMenu menuList={MENU_LINKS} onMenuChange={onMenuChangeHandler} />
+      <Modals type={alignment} onClose={onMenuChangeHandler} />
     </HeaderContainer>
   );
 };

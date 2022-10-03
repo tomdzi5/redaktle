@@ -10,6 +10,7 @@ export const ModalContainer = styled(Box)`
   transform: translate(-50%, -50%);
   width: 60%;
   border-radius: 0.6rem;
+  overflow: hidden;
   border: none;
   outline: none;
 `;
@@ -21,10 +22,11 @@ export const Header = styled(Box)`
   width: 100%;
   height: 4.2rem;
   border-bottom: 1px solid ${({ theme }) => theme.palette.primary.dark};
+  background-color: ${({ theme }) => theme.palette.primary.main};
 `;
 
 export const StyledCloseIcon = styled(CloseIcon)`
-  color: ${({ theme }) => theme.palette.primary.main};
+  color: ${({ theme }) => theme.palette.secondary.main};
 `;
 
 export const Main = styled(Box)`
@@ -45,17 +47,14 @@ export const Main = styled(Box)`
 `;
 
 export const Footer = styled(Box)`
-  position: absolute;
-  background-color: ${({ theme }) => theme.palette.primary.light};
+  background-color: ${({ theme }) => theme.palette.primary.main};
   z-index: 2;
-  bottom: 0;
   width: 100%;
   height: 4.2rem;
   display: flex;
   align-items: center;
   justify-content: right;
-  border-top: 1px solid ${({ theme }) => theme.palette.primary.main};
-  border-radius: 0 0 0.6rem 0.6rem;
+  border-top: 1px solid ${({ theme }) => theme.palette.secondary.main};
 
   & > button {
     margin-right: 1.2rem;
@@ -69,6 +68,7 @@ export const ModalButton = styled(Button)`
   border: 1px solid ${({ theme }) => theme.palette.primary.main};
 
   &:hover {
-    color: ${({ theme }) => theme.palette.primary.main};
+    color: ${({ theme }) => theme.palette.secondary.main};
+    background-color: rgba(0, 0, 0, 0.04);
   }
 `;

@@ -10,17 +10,12 @@ import {
   Footer,
   ModalButton,
 } from "./styled";
+import { ModalTypes } from "../../types/modal";
 
 type PropsType = {
   title: string;
   children: React.ReactElement;
-  onClose: (
-    event:
-      | React.MouseEvent<HTMLElement>
-      | React.MouseEvent<HTMLLIElement>
-      | null,
-    newAligment: string | null
-  ) => void;
+  onClose: (event: {}, aligment: ModalTypes) => void;
   open: boolean;
 };
 
@@ -28,7 +23,7 @@ const CustomModal = (props: PropsType) => {
   const { title, children, onClose, open } = props;
 
   return (
-    <Modal open={open} onClose={() => onClose(null, null)}>
+    <Modal open={open} onClose={(event) => onClose(event, null)}>
       <ModalContainer>
         <Header>
           <Typography variant="h2">{title}</Typography>
@@ -39,7 +34,7 @@ const CustomModal = (props: PropsType) => {
         <Main>{children}</Main>
         <Footer>
           <ModalButton onClick={(event) => onClose(event, null)}>
-            <Typography variant="button">Close</Typography>
+            <Typography>Close</Typography>
           </ModalButton>
         </Footer>
       </ModalContainer>

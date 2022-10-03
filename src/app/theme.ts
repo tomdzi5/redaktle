@@ -3,14 +3,17 @@ import { createTheme } from "@mui/material/styles";
 export const theme = createTheme({
   palette: {
     primary: {
-      main: "#202122",
+      main: "#eaecf0",
       light: "#f6f6f6",
-      contrastText: "#0645ad",
+    },
+    secondary: {
+      main: "#54595d",
     },
   },
   typography: {
     allVariants: {
       fontFamily: `'Linux Libertine','Georgia','Times', serif`,
+      color: `#202122`,
     },
     h2: {
       fontSize: "1.8em",
