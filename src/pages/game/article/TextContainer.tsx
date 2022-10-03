@@ -7,15 +7,21 @@ type PropsType = {
 };
 
 const findWords = (text: string) => {
+  // const blackRectangleCode = "&#9646;";
   const wordArray = text.split(" ");
 
   console.log(wordArray);
 
   const bluredWords = wordArray.map((word) => {
     if (word.length < 5) return word + " ";
+
+    const wordHide = word.split("").map(() => <>&#9646;</>);
+
     return (
       <>
-        <BlurredText guessed={false}>{word}</BlurredText>{" "}
+        <BlurredText guessed={false}>
+          <span>{wordHide}</span>
+        </BlurredText>{" "}
       </>
     );
   });
