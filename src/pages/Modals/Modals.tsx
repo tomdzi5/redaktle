@@ -1,5 +1,5 @@
 import { ModalTypes } from "../../types/modal";
-import CustomModal from "./CustomModal";
+import CustomModal from "../../components/CustomModal/CustomModal";
 
 type PropsType = {
   onClose: (event: {}, aligment: ModalTypes) => void;

@@ -1,6 +1,6 @@
 import { Card, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import Header from "../../components/Header";
+import Header from "../Header";
 import Article from "./article/Article";
 
 const StyledGrid = styled(Grid)`
