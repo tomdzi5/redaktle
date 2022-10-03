@@ -7,7 +7,6 @@ type PropsType = {
 };
 
 const findWords = (text: string) => {
-  // const blackRectangleCode = "&#9646;";
   const wordArray = text.split(" ");
 
   console.log(wordArray);
