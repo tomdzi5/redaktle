@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 export const ModalContainer = styled(Box)`
@@ -18,11 +18,12 @@ export const ModalContainer = styled(Box)`
 export const Header = styled(Box)`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
   height: 4.2rem;
   border-bottom: 1px solid ${({ theme }) => theme.palette.primary.dark};
   background-color: ${({ theme }) => theme.palette.primary.main};
+  padding-inline: 1.5rem;
 `;
 
 export const StyledCloseIcon = styled(CloseIcon)`
@@ -33,7 +34,7 @@ export const Main = styled(Box)`
   width: 100%;
   max-height: 70vh;
   overflow-y: scroll;
-  padding: 0 2.2rem;
+  padding-inline: 1.5rem;
   -ms-overflow-style: none;
   scrollbar-width: none;
 
@@ -43,32 +44,5 @@ export const Main = styled(Box)`
   }
   &::-webkit-scrollbar {
     display: none;
-  }
-`;
-
-export const Footer = styled(Box)`
-  background-color: ${({ theme }) => theme.palette.primary.main};
-  z-index: 2;
-  width: 100%;
-  height: 4.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  border-top: 1px solid ${({ theme }) => theme.palette.secondary.main};
-
-  & > button {
-    margin-right: 1.2rem;
-  }
-`;
-
-export const ModalButton = styled(Button)`
-  background-color: ${({ theme }) => theme.palette.primary.main};
-  color: ${({ theme }) => theme.palette.primary.light};
-  border-radius: 0.6rem;
-  border: 1px solid ${({ theme }) => theme.palette.primary.main};
-
-  &:hover {
-    color: ${({ theme }) => theme.palette.secondary.main};
-    background-color: rgba(0, 0, 0, 0.04);
   }
 `;

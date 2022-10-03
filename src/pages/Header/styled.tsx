@@ -21,10 +21,11 @@ export const HeaderContainer = styled(AppBar)`
   background-color: ${({ theme }) => theme.palette.primary.main};
   border-bottom: 1px solid #c8ccd1;
   box-shadow: inset 0 -1px 3px rgb(0 0 0 / 8%);
+  flex-basis: 70%;
 `;
 
 export const Title = styled(Button)`
-  margin-left: 0.6rem;
+  padding: 2rem;
   font-size: 1.4rem;
   font-weight: 700;
 `;
@@ -63,7 +64,7 @@ export const MenuContainer = styled(Box)`
   justify-content: center;
   align-self: left;
   align-items: center;
-  width: 200px;
+  width: 5rem;
   height: 100%;
 `;
 

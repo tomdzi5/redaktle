@@ -2,14 +2,7 @@ import React from "react";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Modal from "@mui/material/Modal";
-import {
-  ModalContainer,
-  Header,
-  Main,
-  StyledCloseIcon,
-  Footer,
-  ModalButton,
-} from "./styled";
+import { ModalContainer, Header, Main, StyledCloseIcon } from "./styled";
 import { ModalTypes } from "../../types/modal";
 
 type PropsType = {
@@ -32,11 +25,6 @@ const CustomModal = (props: PropsType) => {
           </IconButton>
         </Header>
         <Main>{children}</Main>
-        <Footer>
-          <ModalButton onClick={(event) => onClose(event, null)}>
-            <Typography>Close</Typography>
-          </ModalButton>
-        </Footer>
       </ModalContainer>
     </Modal>
   );
