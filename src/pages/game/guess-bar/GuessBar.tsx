@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/system';
-import { Box, Button, Grid, IconButton, InputAdornment, OutlinedInput } from '@mui/material';
+import { Box, Grid, IconButton, InputAdornment, OutlinedInput } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+
+import MainButton from '../../../components/MainButton';
 
 const StyledFooter = styled('footer')(({ theme }) => ({
     position: 'fixed',
@@ -25,10 +27,22 @@ type GuessBarProps = {
 
 const GuessBar = ({onGuess}: GuessBarProps) => {
     const [guessText, setGuessText] = useState('');
-    const handleGuess = () => {
+    const handleGuess = (event: React.SyntheticEvent) => {
+        event.preventDefault();
         onGuess(guessText);
         setGuessText('');
     }
+
+    const searchIcon = (
+        <InputAdornment position="start">
+            <IconButton
+                edge="end"
+                onClick={handleGuess}
+            >
+                <SearchIcon fontSize="small"/>
+            </IconButton>
+        </InputAdornment>
+    );
 
     return (
         <StyledFooter>
@@ -36,22 +50,14 @@ const GuessBar = ({onGuess}: GuessBarProps) => {
                 <Grid container spacing={2} justifyContent="center" alignItems="center">
                     <Grid item xs={12}>
                         <form onSubmit={handleGuess}>
-                            <Button>Top</Button>
+                            <MainButton>Top</MainButton>
                             <GuessInputField
                                 value={guessText}
                                 onChange={(event) => setGuessText(event.target.value)}
                                 placeholder="Guess"
-                                startAdornment={
-                                    <InputAdornment position="start">
-                                        <IconButton
-                                            edge="end"
-                                            onClick={handleGuess}
-                                        >
-                                            <SearchIcon fontSize="small"/>
-                                        </IconButton></InputAdornment>
-                                }
+                                startAdornment={searchIcon}
                                 size="small"/>
-                            <Button type="submit" >Guess</Button>
+                            <MainButton type="submit">Guess</MainButton>
                         </form>
                     </Grid>
                 </Grid>
