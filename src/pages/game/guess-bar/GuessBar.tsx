@@ -29,13 +29,15 @@ const GuessBar = ({onGuess}: GuessBarProps) => {
             <Box>
                 <Grid container spacing={2} justifyContent="center" alignItems="center">
                     <Grid item xs={12}>
-                        <Button>Top</Button>
-                        <TextField
-                            value={guessText}
-                            onChange={(event) => setGuessText(event.target.value)}
-                            placeholder="Guess"
-                            size="small"/>
-                        <Button type="submit" onClick={handleGuess}>Guess</Button>
+                        <form onSubmit={handleGuess}>
+                            <Button>Top</Button>
+                            <TextField
+                                value={guessText}
+                                onChange={(event) => setGuessText(event.target.value)}
+                                placeholder="Guess"
+                                size="small"/>
+                            <Button type="submit" >Guess</Button>
+                        </form>
                     </Grid>
                 </Grid>
             </Box>
