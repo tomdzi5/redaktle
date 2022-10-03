@@ -1,17 +1,17 @@
 import { useState } from 'react';
-import styled from 'styled-components';
+import { styled } from '@mui/system';
 import { Box, Button, Grid, TextField } from '@mui/material';
 
-const StyledFooter = styled.footer`
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 10vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #ffffff;
-`
+const StyledFooter = styled('footer')(({ theme }) => ({
+    position: 'fixed',
+    bottom: '0',
+    width: '100%',
+    height: '10vh',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    backgroundColor: theme.palette.secondary.main,
+}));
 
 type GuessBarProps = {
     onGuess: (guessText: string) => void;

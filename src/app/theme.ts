@@ -2,11 +2,15 @@ import { createTheme } from '@mui/material/styles';
 
 export const theme = createTheme({
     palette: {
+        // for buttons to look like wikipedia links
         primary: {
-            main: '#0052cc',
+            main: '#3366cc',
         },
+        // for backgrounds
         secondary: {
-            main: '#edf2ff',
+            main: '#eaecf0',
+            light: '#f8f9fa',
+            dark: '#d1dbdf',
         },
     },
     typography: {
