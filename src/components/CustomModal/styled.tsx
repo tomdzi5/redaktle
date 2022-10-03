@@ -23,7 +23,14 @@ export const Header = styled(Box)`
   height: 4.2rem;
   border-bottom: 1px solid ${({ theme }) => theme.palette.primary.dark};
   background-color: ${({ theme }) => theme.palette.primary.main};
-  padding-inline: 1.5rem;
+
+  & > h2 {
+    margin-left: 1.6rem;
+  }
+
+  & > button {
+    margin-right: 1.6rem;
+  }
 `;
 
 export const StyledCloseIcon = styled(CloseIcon)`
@@ -31,10 +38,12 @@ export const StyledCloseIcon = styled(CloseIcon)`
 `;
 
 export const Main = styled(Box)`
+  display: flex;
+  flex-basis: 70%;
   width: 100%;
   max-height: 70vh;
   overflow-y: scroll;
-  padding-inline: 1.5rem;
+  padding-inline: 1.6rem;
   -ms-overflow-style: none;
   scrollbar-width: none;
 
