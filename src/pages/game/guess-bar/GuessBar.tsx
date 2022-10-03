@@ -44,7 +44,6 @@ const GuessBar = ({onGuess}: GuessBarProps) => {
                                 startAdornment={
                                     <InputAdornment position="start">
                                         <IconButton
-                                            aria-label="toggle password visibility"
                                             edge="end"
                                             onClick={handleGuess}
                                         >
@@ -52,7 +51,6 @@ const GuessBar = ({onGuess}: GuessBarProps) => {
                                         </IconButton></InputAdornment>
                                 }
                                 size="small"/>
-
                             <Button type="submit" >Guess</Button>
                         </form>
                     </Grid>
