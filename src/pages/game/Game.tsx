@@ -1,7 +1,9 @@
 import { Card, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { useState } from "react";
+import Header from "../../components/Header";
+import Modals from "../../components/Modals";
 import Article from "./article/Article";
-import Header from "../../app/components/Header";
 
 const StyledGrid = styled(Grid)`
   height: 90vh;
@@ -24,5 +26,4 @@ const Game = () => {
     </>
   );
 };
-
 export default Game;
