@@ -13,10 +13,15 @@ const StyledFooter = styled.footer`
   background-color: #ffffff;
 `
 
-const GuessBar = () => {
+type GuessBarProps = {
+    onGuess: (guessText: string) => void;
+}
+
+const GuessBar = ({onGuess}: GuessBarProps) => {
     const [guessText, setGuessText] = useState('');
     const handleGuess = () => {
-        console.log(guessText)
+        onGuess(guessText);
+        setGuessText('');
     }
 
     return (
