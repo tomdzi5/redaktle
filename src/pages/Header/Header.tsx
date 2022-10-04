@@ -45,7 +45,7 @@ const Header = () => {
                 aria-label="header-menu"
             >
                 {Object.keys(MODALS_CONTENT).map((menuLink) => (
-                    <StyledLink value={menuLink}>
+                    <StyledLink value={menuLink} key={menuLink}>
                         <Typography>{menuLink}</Typography>
                     </StyledLink>
                 ))}

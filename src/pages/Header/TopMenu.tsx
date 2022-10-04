@@ -27,8 +27,6 @@ const TopMenu = (props: Props) => {
             <IconButton
                 sx={{ display: { sm: 'none' } }}
                 aria-controls={open ? 'header-menu' : undefined}
-                aria-haspopop="true"
-                aria-extended={open ? 'true' : undefined}
                 onClick={onClickHandler}
             >
                 <StyledMenuIcon color="inherit" />
@@ -54,6 +52,7 @@ const TopMenu = (props: Props) => {
                 {menuList.map((menuItem) => (
                     <StyledMenuItem
                         onClick={(_event) => onCloseHandler(menuItem)}
+                        key={menuItem}
                     >
                         {menuItem}
                     </StyledMenuItem>

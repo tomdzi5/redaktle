@@ -3,7 +3,6 @@ import {
     Box,
     ToggleButton,
     ToggleButtonGroup,
-    Button,
     MenuItem,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -24,10 +23,11 @@ export const HeaderContainer = styled(AppBar)`
     flex-basis: 70%;
 `;
 
-export const Title = styled(Button)`
+export const Title = styled(Box)`
     padding: 2rem;
-    font-size: 1.4rem;
-    font-weight: 700;
+    & > p {
+        font-size: 1.4rem;
+    }
 `;
 
 export const LinkContainer = styled(ToggleButtonGroup)`
