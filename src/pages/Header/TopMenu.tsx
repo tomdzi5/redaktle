@@ -10,8 +10,7 @@ type Props = {
     onMenuChange: (newActiveModal: ActiveModal) => void;
 };
 
-const TopMenu = (props: Props) => {
-    const { menuList, onMenuChange } = props;
+const TopMenu = ({ menuList, onMenuChange }: Props) => {
     const [anchor, setAnchor] = useState<null | HTMLElement>(null);
     const open = Boolean(anchor);
     const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
