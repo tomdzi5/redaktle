@@ -1,5 +1,5 @@
 import { ModalTypes } from '../../types/modal';
-import CustomModal from '../../components/CustomModal/CustomModal';
+import AppModal from '../../components/AppModal/AppModal';
 
 type PropsType = {
     onClose: (event: {}, aligment: ModalTypes) => void;
@@ -11,7 +11,7 @@ const Modals = (props: PropsType) => {
 
     return (
         <>
-            <CustomModal
+            <AppModal
                 title="Info"
                 onClose={onClose}
                 open={type === 'Info' ? true : false}
@@ -57,21 +57,21 @@ const Modals = (props: PropsType) => {
                     dolore, nihil rem adipisci qui. Sapiente porro iure
                     provident.
                 </p>
-            </CustomModal>
-            <CustomModal
+            </AppModal>
+            <AppModal
                 title="Stats"
                 onClose={onClose}
                 open={type === 'Stats' ? true : false}
             >
                 <p>Stats modal text</p>
-            </CustomModal>
-            <CustomModal
+            </AppModal>
+            <AppModal
                 title="Settings"
                 onClose={onClose}
                 open={type === 'Settings' ? true : false}
             >
                 <p>Settings modal text</p>
-            </CustomModal>
+            </AppModal>
         </>
     );
 };

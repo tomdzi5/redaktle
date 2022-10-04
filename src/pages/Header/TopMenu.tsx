@@ -8,7 +8,7 @@ type Props = {
     onMenuChange: (event: {}, newAligment: ModalTypes) => void;
 };
 
-const CustomMenu = (props: Props) => {
+const TopMenu = (props: Props) => {
     const { menuList, onMenuChange } = props;
     const [anchor, setAnchor] = useState<null | HTMLElement>(null);
     const open = Boolean(anchor);
@@ -61,4 +61,4 @@ const CustomMenu = (props: Props) => {
     );
 };
 
-export default CustomMenu;
+export default TopMenu;

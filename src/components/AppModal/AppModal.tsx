@@ -12,7 +12,7 @@ type PropsType = {
     open: boolean;
 };
 
-const CustomModal = (props: PropsType) => {
+const AppModal = (props: PropsType) => {
     const { title, children, onClose, open } = props;
 
     return (
@@ -30,4 +30,4 @@ const CustomModal = (props: PropsType) => {
     );
 };
 
-export default CustomModal;
+export default AppModal;
