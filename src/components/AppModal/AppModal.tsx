@@ -1,14 +1,16 @@
 import React from 'react';
+
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
+
 import { ModalContainer, Header, Main, StyledCloseIcon } from './styled';
-import { ModalTypes } from '../../types/modal';
+import { ActiveModal } from '../../types/modal';
 
 type PropsType = {
     title: string;
     children: React.ReactElement;
-    onClose: (event: {}, aligment: ModalTypes) => void;
+    onClose: (event: {}, aligment: ActiveModal) => void;
     open: boolean;
 };
 

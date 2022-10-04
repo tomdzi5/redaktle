@@ -1,11 +1,13 @@
-import { IconButton, Menu } from '@mui/material';
 import React, { useState } from 'react';
+
+import { IconButton, Menu } from '@mui/material';
+
 import { MenuContainer, StyledMenuIcon, StyledMenuItem } from './styled';
-import { ModalTypes } from '../../types/modal';
+import { ActiveModal } from '../../types/modal';
 
 type Props = {
-    menuList: string[];
-    onMenuChange: (event: {}, newAligment: ModalTypes) => void;
+    menuList: ('Settings' | 'Info' | 'Stats' | null)[];
+    onMenuChange: (newActiveModal: ActiveModal) => void;
 };
 
 const TopMenu = (props: Props) => {
@@ -15,8 +17,8 @@ const TopMenu = (props: Props) => {
     const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchor(event.currentTarget);
     };
-    const onCloseHandler = (event: any, menuItem: string) => {
-        onMenuChange(event, menuItem);
+    const onCloseHandler = (newActiveModal: ActiveModal) => {
+        onMenuChange(newActiveModal);
         setAnchor(null);
     };
 
@@ -35,7 +37,7 @@ const TopMenu = (props: Props) => {
                 id="header-menu"
                 anchorEl={anchor}
                 open={open}
-                onClose={(event, menuItem) => onCloseHandler(event, menuItem)}
+                onClose={(_event) => onCloseHandler(null)}
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 transformOrigin={{ vertical: 'top', horizontal: 'center' }}
                 MenuListProps={{
@@ -51,7 +53,7 @@ const TopMenu = (props: Props) => {
             >
                 {menuList.map((menuItem) => (
                     <StyledMenuItem
-                        onClick={(event) => onCloseHandler(event, menuItem)}
+                        onClick={(_event) => onCloseHandler(menuItem)}
                     >
                         {menuItem}
                     </StyledMenuItem>

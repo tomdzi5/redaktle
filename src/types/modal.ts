@@ -1,1 +1,1 @@
-export type ModalTypes = string | null;
+export type ActiveModal = 'Settings' | 'Info' | 'Stats' | null;

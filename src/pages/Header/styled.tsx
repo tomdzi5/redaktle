@@ -62,7 +62,6 @@ export const MenuContainer = styled(Box)`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-self: left;
     align-items: center;
     width: 5rem;
     height: 100%;
