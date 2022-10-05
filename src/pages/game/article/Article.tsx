@@ -24,7 +24,7 @@ const Article = () => {
         <ArticleCard>
             <CardContent sx={{ m: 2 }}>
                 {article.status === LOADING_STATUS.IDLE && (
-                    <TextContainer blurredArticle={article.blurred} />
+                    <TextContainer article={article.data} />
                 )}
                 {article.status === LOADING_STATUS.LOADING && <Loader />}
             </CardContent>

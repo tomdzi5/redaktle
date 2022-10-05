@@ -1,18 +1,17 @@
+export type WordToGuess = {
+    word: string;
+    isGuessed: boolean;
+};
+
 export type ArticleType = {
     title: string;
     text: string;
 };
 
-export type BlurredArticleType = {
-    title: string[];
-    text: string[];
-};
-
 export type ArticleSliceType = {
-    original: {
-        title: string[];
-        text: string[];
+    data: {
+        title: WordToGuess[];
+        text: WordToGuess[];
     };
-    blurred: BlurredArticleType;
     status: string;
 };

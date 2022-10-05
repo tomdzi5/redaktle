@@ -1,16 +1,28 @@
-import { BLUR_CHARACTER, POLISH_COMMON_WORDS } from '../utils/constants';
+import { WordToGuess } from '../types/article';
+import { POLISH_COMMON_WORDS, REGEX } from '../utils/constants';
 
 export const textToArray = (text: string) => {
-    return text.split(' ');
+    const wordsArray = text.match(REGEX) as string[];
+    return wordsArray;
 };
 
 export const blurWords = (words: string[]) => {
     return words.map((word) => {
+        let wordToGuess: WordToGuess;
+
         if (POLISH_COMMON_WORDS.includes(word)) {
-            return word;
+            wordToGuess = {
+                word,
+                isGuessed: true,
+            };
         }
 
-        return BLUR_CHARACTER.repeat(word.length);
+        wordToGuess = {
+            word,
+            isGuessed: false,
+        };
+
+        return wordToGuess;
     });
 };
 

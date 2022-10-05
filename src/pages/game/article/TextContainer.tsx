@@ -1,13 +1,17 @@
 import { Typography } from '@mui/material';
-import { BlurredArticleType } from '../../../types/article';
+import { WordToGuess } from '../../../types/article';
 import { BlurredText } from './styled';
 
 type PropsType = {
-    blurredArticle: BlurredArticleType;
+    article: {
+        title: WordToGuess[];
+        text: WordToGuess[];
+    };
 };
 
 const TextContainer = (props: PropsType) => {
-    const { title, text } = props.blurredArticle;
+    console.log(props);
+    // const { title, text } = props.article;
 
     const textBlur = (textToBlur: string[]) => {
         return textToBlur.map((word) => {
@@ -23,13 +27,15 @@ const TextContainer = (props: PropsType) => {
         });
     };
 
+    console.log(textBlur(['']));
+
     return (
         <>
             <Typography variant="h2" sx={{ mb: 2 }}>
-                {textBlur(title)}
+                title
             </Typography>
             <Typography variant="body1" sx={{ textAlign: 'justify' }}>
-                {textBlur(text)}
+                text
             </Typography>
         </>
     );

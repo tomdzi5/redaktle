@@ -7,11 +7,7 @@ import { blurWords, textToArray } from '../../../services/textService';
 import { ArticleSliceType } from '../../../types/article';
 
 const initialState: ArticleSliceType = {
-    original: {
-        title: [],
-        text: [],
-    },
-    blurred: {
+    data: {
         title: [],
         text: [],
     },
@@ -34,17 +30,14 @@ export const articleSlice = createSlice({
             })
             .addCase(getArticle.fulfilled, (state, action) => {
                 state.status = LOADING_STATUS.IDLE;
-                const orginalTitleArray = textToArray(action.payload.title);
-                const orginalTextArray = textToArray(action.payload.text);
-                const blurredTitleArray = blurWords(orginalTitleArray);
-                const blurredTextArray = blurWords(orginalTextArray);
-                state.original = {
-                    title: orginalTitleArray,
-                    text: orginalTextArray,
-                };
-                state.blurred = {
-                    title: blurredTitleArray,
-                    text: blurredTextArray,
+                const titleWordArray = textToArray(action.payload.title);
+                const textWordArray = textToArray(action.payload.text);
+                console.log(textWordArray);
+                const titleToGuessArray = blurWords(titleWordArray);
+                const textToGuessArray = blurWords(textWordArray);
+                state.data = {
+                    title: titleToGuessArray,
+                    text: textToGuessArray,
                 };
             })
             .addCase(getArticle.rejected, (state) => {
