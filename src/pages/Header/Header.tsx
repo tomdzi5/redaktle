@@ -11,21 +11,7 @@ import {
 import TopMenu from './TopMenu';
 import { ActiveModal } from '../../types/modal';
 import AppModal from '../../components/AppModal';
-
-export const MODALS_CONTENT = {
-    info: {
-        title: 'Information',
-        content: <p>Information modal content</p>,
-    },
-    stats: {
-        title: 'Statistics',
-        content: <p>Statistics modal content</p>,
-    },
-    settings: {
-        title: 'Settings',
-        content: <p>Settings modal content</p>,
-    },
-};
+import { MODALS_CONTENT } from '../../utils/constants';
 
 const MENU_LINKS = Object.keys(MODALS_CONTENT) as
     | (keyof typeof MODALS_CONTENT)[];
