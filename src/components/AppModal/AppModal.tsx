@@ -4,7 +4,12 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
 
-import { ModalContainer, ModalHeader, Main, StyledCloseIcon } from './styled';
+import {
+    ModalContainer,
+    ModalHeader,
+    ModalContent,
+    StyledCloseIcon,
+} from './styled';
 
 type PropsType = {
     title: string;
@@ -23,7 +28,7 @@ const AppModal = ({ title, children, onClose, open }: PropsType) => {
                         <StyledCloseIcon />
                     </IconButton>
                 </ModalHeader>
-                <Main>{children}</Main>
+                <ModalContent>{children}</ModalContent>
             </ModalContainer>
         </Modal>
     );

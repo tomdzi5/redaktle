@@ -37,7 +37,7 @@ export const StyledCloseIcon = styled(CloseIcon)`
     color: ${({ theme }) => theme.palette.secondary.main};
 `;
 
-export const Main = styled(Box)`
+export const ModalContent = styled(Box)`
     display: flex;
     flex-basis: 70%;
     width: 100%;
