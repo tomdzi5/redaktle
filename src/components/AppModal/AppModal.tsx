@@ -14,9 +14,7 @@ type PropsType = {
     open: boolean;
 };
 
-const AppModal = (props: PropsType) => {
-    const { title, children, onClose, open } = props;
-
+const AppModal = ({ title, children, onClose, open }: PropsType) => {
     return (
         <Modal open={open} onClose={(event) => onClose(event, null)}>
             <ModalContainer>
