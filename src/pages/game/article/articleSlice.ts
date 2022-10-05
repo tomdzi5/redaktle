@@ -4,16 +4,16 @@ import { fetchArticle } from '../../../services/apiService';
 import { LOADING_STATUS } from '../../../utils/constants';
 import { RootState } from '../../../app/store';
 import { blurWords, textToArray } from '../../../services/textService';
+import { ArticleSliceType } from '../../../types/article';
 
-console.log(blurWords(['jako']));
-const initialState = {
+const initialState: ArticleSliceType = {
     original: {
-        title: [] as string[],
-        text: [] as string[],
+        title: [],
+        text: [],
     },
     blurred: {
-        title: [] as string[],
-        text: [] as string[],
+        title: [],
+        text: [],
     },
     status: LOADING_STATUS.IDLE,
 };
