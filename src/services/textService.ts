@@ -25,5 +25,3 @@ export const blurWords = (words: string[]) => {
         return wordToGuess;
     });
 };
-
-console.log(blurWords(['hello']));
