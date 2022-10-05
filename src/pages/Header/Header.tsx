@@ -4,7 +4,7 @@ import { Typography } from '@mui/material';
 
 import {
     HeaderContainer,
-    LinkContainer,
+    HeaderButtons,
     PageTitle,
     StyledLink,
 } from './styled';
@@ -42,7 +42,7 @@ const Header = () => {
             <PageTitle onClick={() => onMenuChangeHandler()}>
                 <Typography>Redactle</Typography>
             </PageTitle>
-            <LinkContainer
+            <HeaderButtons
                 sx={{ display: { sm: 'flex' } }}
                 value={activeModal}
                 exclusive
@@ -56,7 +56,7 @@ const Header = () => {
                         </Typography>
                     </StyledLink>
                 ))}
-            </LinkContainer>
+            </HeaderButtons>
             <TopMenu menuList={MENU_LINKS} onMenuChange={onMenuChangeHandler} />
             {activeModal && (
                 <AppModal

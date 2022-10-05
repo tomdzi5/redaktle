@@ -30,7 +30,7 @@ export const PageTitle = styled(Box)`
     }
 `;
 
-export const LinkContainer = styled(ToggleButtonGroup)`
+export const HeaderButtons = styled(ToggleButtonGroup)`
     display: none;
     flex-direction: row;
     justify-content: space-between;
