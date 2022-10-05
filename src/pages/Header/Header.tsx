@@ -23,7 +23,7 @@ export const MODALS_CONTENT = {
 };
 
 const MENU_LINKS = Object.keys(MODALS_CONTENT) as
-    | (keyof typeof MODALS_CONTENT | null)[];
+    | (keyof typeof MODALS_CONTENT)[];
 
 const Header = () => {
     const [activeModal, setActiveModal] = useState<ActiveModal>(null);
@@ -44,7 +44,7 @@ const Header = () => {
                 onChange={(_event, type) => onMenuChangeHandler(type)}
                 aria-label="header-menu"
             >
-                {Object.keys(MODALS_CONTENT).map((menuLink) => (
+                {MENU_LINKS.map((menuLink) => (
                     <StyledLink value={menuLink} key={menuLink}>
                         <Typography>{menuLink}</Typography>
                     </StyledLink>
