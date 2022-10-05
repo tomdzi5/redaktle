@@ -10,18 +10,18 @@ export const blurWords = (words: string[]) => {
     return words.map((word) => {
         let wordToGuess: WordToGuess;
 
-        if (POLISH_COMMON_WORDS.includes(word)) {
+        if (POLISH_COMMON_WORDS.includes(word) || REGEX.test(word)) {
             wordToGuess = {
                 word,
                 isGuessed: true,
             };
+            return wordToGuess;
         }
 
         wordToGuess = {
             word,
             isGuessed: false,
         };
-
         return wordToGuess;
     });
 };

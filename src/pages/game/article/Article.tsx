@@ -20,6 +20,8 @@ const Article = () => {
         dispatch(getArticle());
     }, []);
 
+    console.log(article);
+
     return (
         <ArticleCard>
             <CardContent sx={{ m: 2 }}>
