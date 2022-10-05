@@ -12,7 +12,7 @@ type Props = {
 
 const TopMenu = ({ menuList, onMenuChange }: Props) => {
     const [anchor, setAnchor] = useState<null | HTMLElement>(null);
-    const open = Boolean(anchor);
+    const isMenuOpen = Boolean(anchor);
     const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchor(event.currentTarget);
     };
@@ -25,7 +25,7 @@ const TopMenu = ({ menuList, onMenuChange }: Props) => {
         <MenuContainer sx={{ display: { sm: 'none' } }}>
             <IconButton
                 sx={{ display: { sm: 'none' } }}
-                aria-controls={open ? 'header-menu' : undefined}
+                aria-controls={isMenuOpen ? 'header-menu' : undefined}
                 onClick={onClickHandler}
             >
                 <StyledMenuIcon color="inherit" />
@@ -33,7 +33,7 @@ const TopMenu = ({ menuList, onMenuChange }: Props) => {
             <Menu
                 id="header-menu"
                 anchorEl={anchor}
-                open={open}
+                open={isMenuOpen}
                 onClose={() => onCloseHandler()}
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 transformOrigin={{ vertical: 'top', horizontal: 'center' }}
