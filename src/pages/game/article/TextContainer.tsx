@@ -1,34 +1,44 @@
-import { Typography } from "@mui/material";
-import { ArticleType, BlurredArticleType } from "../../../types/article";
-import { BlurredText } from "./styled";
+import { Typography } from '@mui/material';
+import { ArticleType, BlurredArticleType } from '../../../types/article';
+import { BlurredText } from './styled';
 
 type PropsType = {
-  article: ArticleType;
-  blurredArticle: BlurredArticleType;
+    article: ArticleType;
+    blurredArticle: BlurredArticleType;
 };
 
 const TextContainer = (props: PropsType) => {
-  // const { title, text } = props.article;
-  const { blurredTitle, blurredText } = props.blurredArticle;
+    // const { title, text } = props.article;
+    //This should be used in the future for displaying guessed words.
 
-  return (
-    <>
-      <Typography variant="h2" sx={{ mb: 2 }}>
-        <BlurredText guessed={false}>
-          {blurredTitle.map((word) => word)}
-        </BlurredText>
-      </Typography>
-      <Typography variant="body1" sx={{ textAlign: "justify" }}>
-        {blurredText.map((word) => {
-          if (word[0] !== "*") {
-            return word;
-          }
+    const { blurredTitle, blurredText } = props.blurredArticle;
 
-          return <BlurredText guessed={false}>{word}</BlurredText>;
-        })}
-      </Typography>
-    </>
-  );
+    const textBlur = (textToBlur: string[]) => {
+        return textToBlur.map((word) => {
+            return (
+                <>
+                    {word[0] === '*' ? (
+                        <>
+                            <BlurredText guessed={false}>{word}</BlurredText>{' '}
+                        </>
+                    ) : (
+                        word + ' '
+                    )}
+                </>
+            );
+        });
+    };
+
+    return (
+        <>
+            <Typography variant="h2" sx={{ mb: 2 }}>
+                {textBlur(blurredTitle)}
+            </Typography>
+            <Typography variant="body1" sx={{ textAlign: 'justify' }}>
+                {textBlur(blurredText)}
+            </Typography>
+        </>
+    );
 };
 
 export default TextContainer;
