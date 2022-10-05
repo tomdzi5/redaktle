@@ -16,15 +16,13 @@ const TextContainer = (props: PropsType) => {
     const textBlur = (textToBlur: string[]) => {
         return textToBlur.map((word) => {
             return (
-                <>
+                <span key={word}>
                     {word[0] === '*' ? (
-                        <>
-                            <BlurredText guessed={false}>{word}</BlurredText>{' '}
-                        </>
+                        <BlurredText guessed={false}>{word}</BlurredText>
                     ) : (
-                        word + ' '
-                    )}
-                </>
+                        word
+                    )}{' '}
+                </span>
             );
         });
     };
