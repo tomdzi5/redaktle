@@ -1,15 +1,12 @@
-import { Card, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Article from './article/Article';
+import GuessHistory from './guessHistory/GuessHistory';
 
 const StyledGrid = styled(Grid)`
   height: 90vh;
   justify-content: space-between;
 `;
-
-const StyledCard = styled(Card)`
-  flex-basis: 30%;
-`
 
 const Game = () => {
     return (
@@ -17,7 +14,7 @@ const Game = () => {
             <header> Redaktle, info, stats, settings</header>
             <StyledGrid container sx={{ flexDirection: { xs: "column", md: "row"} }}>
                 <Article />
-                <StyledCard>guess list</StyledCard>
+                <GuessHistory />
             </StyledGrid>
             <footer>search bar</footer>
         </>
