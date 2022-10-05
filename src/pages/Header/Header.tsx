@@ -28,13 +28,13 @@ const MENU_LINKS = Object.keys(MODALS_CONTENT) as
 const Header = () => {
     const [activeModal, setActiveModal] = useState<ActiveModal>(null);
 
-    const onMenuChangeHandler = (newActiveModal: ActiveModal) => {
+    const onMenuChangeHandler = (newActiveModal: ActiveModal = null) => {
         setActiveModal(newActiveModal);
     };
 
     return (
         <HeaderContainer>
-            <Title onClick={() => onMenuChangeHandler(null)}>
+            <Title onClick={() => onMenuChangeHandler()}>
                 <Typography>Redactle</Typography>
             </Title>
             <LinkContainer
@@ -54,7 +54,7 @@ const Header = () => {
             {activeModal && (
                 <AppModal
                     title={MODALS_CONTENT[activeModal].title || ''}
-                    onClose={() => onMenuChangeHandler(null)}
+                    onClose={() => onMenuChangeHandler()}
                     open={!!activeModal}
                 >
                     {MODALS_CONTENT[activeModal].content || <></>}

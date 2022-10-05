@@ -16,7 +16,7 @@ const TopMenu = ({ menuList, onMenuChange }: Props) => {
     const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchor(event.currentTarget);
     };
-    const onCloseHandler = (newActiveModal: ActiveModal) => {
+    const onCloseHandler = (newActiveModal: ActiveModal = null) => {
         onMenuChange(newActiveModal);
         setAnchor(null);
     };
@@ -34,7 +34,7 @@ const TopMenu = ({ menuList, onMenuChange }: Props) => {
                 id="header-menu"
                 anchorEl={anchor}
                 open={open}
-                onClose={(_event) => onCloseHandler(null)}
+                onClose={() => onCloseHandler()}
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 transformOrigin={{ vertical: 'top', horizontal: 'center' }}
                 MenuListProps={{
@@ -50,7 +50,7 @@ const TopMenu = ({ menuList, onMenuChange }: Props) => {
             >
                 {menuList.map((menuItem) => (
                     <StyledMenuItem
-                        onClick={(_event) => onCloseHandler(menuItem)}
+                        onClick={() => onCloseHandler(menuItem)}
                         key={menuItem}
                     >
                         {menuItem}
