@@ -3,27 +3,30 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchArticle } from '../../../services/apiService';
 import { LOADING_STATUS } from '../../../utils/constants';
 import { RootState } from '../../../app/store';
+import { blurWords, textToArray } from '../../../services/textService';
 
+console.log(blurWords(['jako']));
 const initialState = {
-    data: {
-        title: '',
-        text: '',
+    original: {
+        title: [] as string[],
+        text: [] as string[],
+    },
+    blurred: {
+        title: [] as string[],
+        text: [] as string[],
     },
     status: LOADING_STATUS.IDLE,
-}
+};
 
-export const getArticle = createAsyncThunk(
-    'game/getArticle',
-    async () => {
-        const response = await fetchArticle();
-        return response.data;
-    }
-);
+export const getArticle = createAsyncThunk('game/getArticle', async () => {
+    const response = await fetchArticle();
+    return response.data;
+});
 
 export const articleSlice = createSlice({
     name: 'article',
     initialState,
-    reducers : {},
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(getArticle.pending, (state) => {
@@ -31,12 +34,23 @@ export const articleSlice = createSlice({
             })
             .addCase(getArticle.fulfilled, (state, action) => {
                 state.status = LOADING_STATUS.IDLE;
-                state.data = action.payload;
+                const orginalTitleArray = textToArray(action.payload.title);
+                const orginalTextArray = textToArray(action.payload.text);
+                const blurredTitleArray = blurWords(orginalTitleArray);
+                const blurredTextArray = blurWords(orginalTextArray);
+                state.original = {
+                    title: orginalTitleArray,
+                    text: orginalTextArray,
+                };
+                state.blurred = {
+                    title: blurredTitleArray,
+                    text: blurredTextArray,
+                };
             })
             .addCase(getArticle.rejected, (state) => {
                 state.status = LOADING_STATUS.FAILED;
             });
-    }
+    },
 });
 
 export const selectArticle = (state: RootState) => state.article;

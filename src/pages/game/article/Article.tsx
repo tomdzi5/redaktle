@@ -7,16 +7,10 @@ import { getArticle, selectArticle } from './articleSlice';
 import { LOADING_STATUS } from '../../../utils/constants';
 import Loader from '../../../components/Loader';
 import TextContainer from './TextContainer';
-import { BlurredArticleType } from '../../../types/article';
 
 const ArticleCard = styled(Card)`
     flex-basis: 70%;
 `;
-
-const BLURRED_ARTICLE_MOCK: BlurredArticleType = {
-    blurredTitle: ['*****', 'tego', '******'],
-    blurredText: ['****', 'tego', '*******'],
-};
 
 const Article = () => {
     const article = useAppSelector(selectArticle);
@@ -30,10 +24,7 @@ const Article = () => {
         <ArticleCard>
             <CardContent sx={{ m: 2 }}>
                 {article.status === LOADING_STATUS.IDLE && (
-                    <TextContainer
-                        article={article.data}
-                        blurredArticle={BLURRED_ARTICLE_MOCK}
-                    />
+                    <TextContainer blurredArticle={article.blurred} />
                 )}
                 {article.status === LOADING_STATUS.LOADING && <Loader />}
             </CardContent>
