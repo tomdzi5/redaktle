@@ -15,7 +15,7 @@ export const ModalContainer = styled(Box)`
     outline: none;
 `;
 
-export const Header = styled(Box)`
+export const ModalHeader = styled(Box)`
     display: flex;
     align-items: center;
     justify-content: space-between;
