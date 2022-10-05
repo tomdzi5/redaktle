@@ -16,11 +16,11 @@ const StyledCard = styled(Card)`
     flex-basis: 30%;
 `;
 
-const ArticleCard = styledMui(Card)`
+const ArticleCard = styled(Card)`
   flex-basis: 70%;
 `
 
-const GameContainer = styled('div')`
+const ArticleContainer = styled('div')`
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -30,13 +30,13 @@ const GameContainer = styled('div')`
 const Game = () => {
     const dispatch = useAppDispatch();
     const handleGuess = (guessText: string): void => {
-        console.log(guessText);
         dispatch(setGuessText(guessText));
     };
 
     return (
-        <GameContainer>
+        <>
             <Header />
+            <ArticleContainer>
             <StyledGrid container sx={{ flexDirection: { xs: "column", md: "row"} }}>
                 <ArticleCard>
                     <Article />
@@ -44,7 +44,8 @@ const Game = () => {
                 </ArticleCard>
                 <StyledCard>guess list</StyledCard>
             </StyledGrid>
-        </GameContainer>
+            </ArticleContainer>
+        </>
     )
 }
 

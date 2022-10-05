@@ -13,7 +13,7 @@ const StyledFooter = styled('footer')(({ theme }) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
 }));
 
 const GuessInputField = styled(OutlinedInput)({

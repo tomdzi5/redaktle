@@ -1,16 +1,11 @@
 import { useEffect } from 'react';
 
-import { Card, CardContent, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { CardContent, Typography } from '@mui/material';
 
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { getArticle, selectArticle } from './articleSlice';
 import { LOADING_STATUS } from '../../../utils/constants';
 import Loader from '../../../components/Loader';
-
-const ArticleCard = styled(Card)`
-    flex-basis: 70%;
-`;
 
 const Article = () => {
     const article = useAppSelector(selectArticle);
