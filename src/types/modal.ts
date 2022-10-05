@@ -1,1 +1,1 @@
-export type ActiveModal = 'Settings' | 'Info' | 'Stats' | null;
+export type ActiveModal = 'settings' | 'info' | 'stats' | null;

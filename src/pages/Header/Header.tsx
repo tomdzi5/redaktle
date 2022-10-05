@@ -2,21 +2,26 @@ import { useState } from 'react';
 
 import { Typography } from '@mui/material';
 
-import { HeaderContainer, LinkContainer, PageTitle, StyledLink } from './styled';
+import {
+    HeaderContainer,
+    LinkContainer,
+    PageTitle,
+    StyledLink,
+} from './styled';
 import TopMenu from './TopMenu';
 import { ActiveModal } from '../../types/modal';
 import AppModal from '../../components/AppModal';
 
 export const MODALS_CONTENT = {
-    Info: {
+    info: {
         title: 'Information',
         content: <p>Information modal content</p>,
     },
-    Stats: {
+    stats: {
         title: 'Statistics',
         content: <p>Statistics modal content</p>,
     },
-    Settings: {
+    settings: {
         title: 'Settings',
         content: <p>Settings modal content</p>,
     },
@@ -46,7 +51,9 @@ const Header = () => {
             >
                 {MENU_LINKS.map((menuLink) => (
                     <StyledLink value={menuLink} key={menuLink}>
-                        <Typography>{menuLink}</Typography>
+                        <Typography>
+                            {menuLink[0].toUpperCase() + menuLink.substring(1)}
+                        </Typography>
                     </StyledLink>
                 ))}
             </LinkContainer>

@@ -6,7 +6,7 @@ import { MenuContainer, StyledMenuIcon, StyledMenuItem } from './styled';
 import { ActiveModal } from '../../types/modal';
 
 type Props = {
-    menuList: ('Settings' | 'Info' | 'Stats' | null)[];
+    menuList: ActiveModal[];
     onMenuChange: (newActiveModal: ActiveModal) => void;
 };
 
