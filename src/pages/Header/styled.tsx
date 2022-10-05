@@ -23,7 +23,7 @@ export const HeaderContainer = styled(AppBar)`
     flex-basis: 70%;
 `;
 
-export const Title = styled(Box)`
+export const PageTitle = styled(Box)`
     padding: 2rem;
     & > p {
         font-size: 1.4rem;

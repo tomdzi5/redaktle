@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Typography } from '@mui/material';
 
-import { HeaderContainer, LinkContainer, Title, StyledLink } from './styled';
+import { HeaderContainer, LinkContainer, PageTitle, StyledLink } from './styled';
 import TopMenu from './TopMenu';
 import { ActiveModal } from '../../types/modal';
 import AppModal from '../../components/AppModal';
@@ -34,9 +34,9 @@ const Header = () => {
 
     return (
         <HeaderContainer>
-            <Title onClick={() => onMenuChangeHandler()}>
+            <PageTitle onClick={() => onMenuChangeHandler()}>
                 <Typography>Redactle</Typography>
-            </Title>
+            </PageTitle>
             <LinkContainer
                 sx={{ display: { sm: 'flex' } }}
                 value={activeModal}
