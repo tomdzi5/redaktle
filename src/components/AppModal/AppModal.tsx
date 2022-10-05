@@ -5,22 +5,21 @@ import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
 
 import { ModalContainer, ModalHeader, Main, StyledCloseIcon } from './styled';
-import { ActiveModal } from '../../types/modal';
 
 type PropsType = {
     title: string;
     children: React.ReactElement;
-    onClose: (event: {}, aligment: ActiveModal) => void;
+    onClose: () => void;
     open: boolean;
 };
 
 const AppModal = ({ title, children, onClose, open }: PropsType) => {
     return (
-        <Modal open={open} onClose={(event) => onClose(event, null)}>
+        <Modal open={open} onClose={onClose}>
             <ModalContainer>
                 <ModalHeader>
                     <Typography variant="h2">{title}</Typography>
-                    <IconButton onClick={(event) => onClose(event, null)}>
+                    <IconButton onClick={onClose}>
                         <StyledCloseIcon />
                     </IconButton>
                 </ModalHeader>
