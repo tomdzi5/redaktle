@@ -1,1 +1,3 @@
-export type ActiveModal = 'settings' | 'info' | 'stats' | null;
+import { MODALS_CONTENT } from '../utils/constants';
+
+export type ActiveModal = keyof typeof MODALS_CONTENT | null;
