@@ -1,12 +1,7 @@
 import { useEffect } from 'react';
-<<<<<<< HEAD
+
 import { Card, CardContent } from '@mui/material';
 import { styled } from '@mui/material/styles';
-=======
-
-import { CardContent, Typography } from '@mui/material';
->>>>>>> c0da7006e1a94a45e7bd58c6df36870f55f75dca
-
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { getArticle, selectArticle } from './articleSlice';
 import { LOADING_STATUS } from '../../../utils/constants';
