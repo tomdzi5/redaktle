@@ -1,26 +1,26 @@
 import { Card, Grid } from '@mui/material';
-import { styled as styledMui } from '@mui/material/styles';
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 
+import Header from '../Header';
 import Article from './article/Article';
 import GuessBar from './guess-bar/GuessBar';
 import { useAppDispatch } from '../../app/hooks';
 import { setGuessText } from './guess-bar/guessSlice';
 
-const StyledGrid = styledMui(Grid)`
+const StyledGrid = styled(Grid)`
   height: 100%;
   justify-content: space-between;
 `;
 
-const StyledCard = styledMui(Card)`
-  flex-basis: 30%;
-`
+const StyledCard = styled(Card)`
+    flex-basis: 30%;
+`;
 
 const ArticleCard = styledMui(Card)`
   flex-basis: 70%;
 `
 
-const GameContainer = styled.div`
+const GameContainer = styled('div')`
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,9 +36,7 @@ const Game = () => {
 
     return (
         <GameContainer>
-            <header>
-                <p>Redaktle, info, stats, settings</p>
-            </header>
+            <Header />
             <StyledGrid container sx={{ flexDirection: { xs: "column", md: "row"} }}>
                 <ArticleCard>
                     <Article />
