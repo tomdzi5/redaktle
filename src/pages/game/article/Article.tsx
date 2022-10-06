@@ -6,7 +6,6 @@ import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { getArticle, selectArticle } from './articleSlice';
 import { LOADING_STATUS } from '../../../utils/constants';
 import Loader from '../../../components/Loader';
-import TextContainer from './TextContainer';
 
 const ArticleCard = styled(Card)`
     flex-basis: 70%;
@@ -25,9 +24,7 @@ const Article = () => {
     return (
         <ArticleCard>
             <CardContent sx={{ m: 2 }}>
-                {article.status === LOADING_STATUS.IDLE && (
-                    <TextContainer article={article.data} />
-                )}
+                {article.status === LOADING_STATUS.IDLE && <p>test</p>}
                 {article.status === LOADING_STATUS.LOADING && <Loader />}
             </CardContent>
         </ArticleCard>
