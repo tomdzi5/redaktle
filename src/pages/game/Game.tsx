@@ -1,31 +1,14 @@
-import { Card, Grid } from '@mui/material';
-import { styled } from '@mui/material/styles';
-
-import Header from '../Header';
-import Article from './article/Article';
-import GuessBar from './guess-bar/GuessBar';
+import Header from './header';
+import Article from './article';
+import GuessBar from './guess-bar';
 import { useAppDispatch } from '../../app/hooks';
 import { setGuessText } from './guess-bar/guessSlice';
-
-const StyledGrid = styled(Grid)`
-  height: 100%;
-  justify-content: space-between;
-`;
-
-const StyledCard = styled(Card)`
-    flex-basis: 30%;
-`;
-
-const ArticleCard = styled(Card)`
-  flex-basis: 70%;
-`
-
-const ArticleContainer = styled('div')`
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-`
+import {
+    ArticleCard,
+    ArticleContainer,
+    StyledCard,
+    StyledGrid,
+} from './Game.styled';
 
 const Game = () => {
     const dispatch = useAppDispatch();
@@ -37,16 +20,21 @@ const Game = () => {
         <>
             <Header />
             <ArticleContainer>
-            <StyledGrid container sx={{ flexDirection: { xs: "column", md: "row"} }}>
-                <ArticleCard>
-                    <Article />
-                    <GuessBar onGuess={(guessText) => handleGuess(guessText)} />
-                </ArticleCard>
-                <StyledCard>guess list</StyledCard>
-            </StyledGrid>
+                <StyledGrid
+                    container
+                    sx={{ flexDirection: { xs: 'column', md: 'row' } }}
+                >
+                    <ArticleCard>
+                        <Article />
+                        <GuessBar
+                            onGuess={(guessText) => handleGuess(guessText)}
+                        />
+                    </ArticleCard>
+                    <StyledCard>guess list</StyledCard>
+                </StyledGrid>
             </ArticleContainer>
         </>
-    )
-}
+    );
+};
 
 export default Game;

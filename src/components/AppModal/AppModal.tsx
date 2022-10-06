@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
 
-import { ModalContainer, ModalHeader, ModalContent, StyledCloseIcon } from './styled';
+import { ModalContainer, ModalHeader, ModalContent, StyledCloseIcon } from './AppModal.styled';
 
 type PropsType = {
     title: string;

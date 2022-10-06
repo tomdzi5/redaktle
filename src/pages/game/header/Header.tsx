@@ -7,11 +7,11 @@ import {
     HeaderButtons,
     PageTitle,
     StyledLink,
-} from './styled';
+} from './header.styled';
 import TopMenu from './TopMenu';
-import { ActiveModal } from '../../types/modal';
-import AppModal from '../../components/AppModal';
-import { MODALS_CONTENT } from '../../utils/constants';
+import { ActiveModal } from '../../../types/modal';
+import AppModal from '../../../components/AppModal';
+import { MODALS_CONTENT } from '../../../utils/constants';
 
 const MENU_LINKS = Object.keys(MODALS_CONTENT) as
     | (keyof typeof MODALS_CONTENT)[];

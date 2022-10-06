@@ -1,5 +1,5 @@
 import './App.css';
-import Game from './pages/game/Game';
+import Game from './pages/game';
 import { theme } from './app/theme';
 import { ThemeProvider } from '@mui/material';
 
