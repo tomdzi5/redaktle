@@ -10,20 +10,17 @@ const initialState = {
         text: '',
     },
     status: LOADING_STATUS.IDLE,
-}
+};
 
-export const getArticle = createAsyncThunk(
-    'game/getArticle',
-    async () => {
-        const response = await fetchArticle();
-        return response.data;
-    }
-);
+export const getArticle = createAsyncThunk('game/getArticle', async () => {
+    const response = await fetchArticle();
+    return response.data;
+});
 
 export const articleSlice = createSlice({
     name: 'article',
     initialState,
-    reducers : {},
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(getArticle.pending, (state) => {
@@ -36,7 +33,7 @@ export const articleSlice = createSlice({
             .addCase(getArticle.rejected, (state) => {
                 state.status = LOADING_STATUS.FAILED;
             });
-    }
+    },
 });
 
 export const selectArticle = (state: RootState) => state.article;
