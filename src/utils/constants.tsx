@@ -18,3 +18,5 @@ export const MODALS_CONTENT = {
         content: <p>Settings modal content</p>,
     },
 };
+
+export const BLUR_CHARACTER = '*';

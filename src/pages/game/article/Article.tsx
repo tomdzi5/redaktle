@@ -1,21 +1,54 @@
 import { useEffect } from 'react';
 
-import { Card, CardContent } from '@mui/material';
+import { Card, CardContent, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
+
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { getArticle, selectArticle } from './articleSlice';
-import { LOADING_STATUS } from '../../../utils/constants';
+import { BLUR_CHARACTER, LOADING_STATUS } from '../../../utils/constants';
 import Loader from '../../../components/Loader';
-import TextContainer from './TextContainer';
-import { BlurredArticleType } from '../../../types/article';
+import { WordToGuess } from '../../../types/article';
+import { BlurredText } from './styled';
 
 const ArticleCard = styled(Card)`
     flex-basis: 70%;
 `;
 
-const BLURRED_ARTICLE_MOCK: BlurredArticleType = {
-    blurredTitle: ['*****', 'tego', '******'],
-    blurredText: ['****', 'tego', '*******'],
+const BLURRED_ARTICLE_MOCK = {
+    data: {
+        title: [
+            {
+                word: 'cześć',
+                isGuessed: false,
+            },
+            {
+                word: ',',
+                isGuessed: true,
+            },
+            {
+                word: 'moje',
+                isGuessed: true,
+            },
+            {
+                word: 'imie',
+                isGuessed: false,
+            },
+        ],
+        text: [
+            {
+                word: 'to',
+                isGuessed: true,
+            },
+            {
+                word: 'bartek',
+                isGuessed: false,
+            },
+            {
+                word: 'ratajczyk',
+                isGuessed: false,
+            },
+        ],
+    },
 };
 
 const Article = () => {
@@ -26,14 +59,37 @@ const Article = () => {
         dispatch(getArticle());
     }, []);
 
+    const blurWords = (wordsToBlurArray: WordToGuess[]) => {
+        return wordsToBlurArray.map((wordToBlur) => {
+            if (wordToBlur.isGuessed) {
+                return wordToBlur.word + ' ';
+            }
+
+            const blurredWord = BLUR_CHARACTER.repeat(wordToBlur.word.length);
+
+            return (
+                <>
+                    <BlurredText guessed={false}>{blurredWord}</BlurredText>{' '}
+                </>
+            );
+        });
+    };
+
     return (
         <ArticleCard>
             <CardContent sx={{ m: 2 }}>
                 {article.status === LOADING_STATUS.IDLE && (
-                    <TextContainer
-                        article={article.data}
-                        blurredArticle={BLURRED_ARTICLE_MOCK}
-                    />
+                    <>
+                        <Typography variant="h2" sx={{ mb: 2 }}>
+                            {blurWords(BLURRED_ARTICLE_MOCK.data.title)}
+                        </Typography>
+                        <Typography
+                            variant="body1"
+                            sx={{ textAlign: 'justify' }}
+                        >
+                            {blurWords(BLURRED_ARTICLE_MOCK.data.text)}
+                        </Typography>
+                    </>
                 )}
                 {article.status === LOADING_STATUS.LOADING && <Loader />}
             </CardContent>
