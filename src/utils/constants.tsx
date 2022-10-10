@@ -19,7 +19,7 @@ export const MODALS_CONTENT = {
     },
 };
 
-export const REGEX = /\w+|\s+|[^\s\w]+/g;
+export const LETTERS_AND_PUNCTUATION_REGEX = /\w+|\s+|[^\s\w]+/g;
 
 export const POLISH_COMMON_WORDS = ['w', 'też', 'jako'];
 
