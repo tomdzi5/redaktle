@@ -7,7 +7,7 @@ import {
     HeaderButtons,
     PageTitle,
     StyledLink,
-} from './header.styled';
+} from './Header.styled';
 import TopMenu from './TopMenu';
 import { ActiveModal } from '../../../types/modal';
 import AppModal from '../../../components/AppModal';

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { IconButton, Menu } from '@mui/material';
 
-import { MenuContainer, StyledMenuIcon, StyledMenuItem } from './header.styled';
+import { MenuContainer, StyledMenuIcon, StyledMenuItem } from './Header.styled';
 import { ActiveModal } from '../../../types/modal';
 
 type Props = {
