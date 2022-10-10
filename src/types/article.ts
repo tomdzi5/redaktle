@@ -1,6 +1,6 @@
 export type WordToGuess = {
     word: string;
-    isGuessed: boolean;
+    isVisible: boolean;
 };
 
 export type ArticleType = {
