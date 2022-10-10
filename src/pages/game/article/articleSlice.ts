@@ -32,7 +32,6 @@ export const articleSlice = createSlice({
                 state.status = LOADING_STATUS.IDLE;
                 const titleWordArray = textToArray(action.payload.title);
                 const textWordArray = textToArray(action.payload.text);
-                console.log(textWordArray);
                 const titleToGuessArray = blurWords(titleWordArray);
                 const textToGuessArray = blurWords(textWordArray);
                 state.data = {
