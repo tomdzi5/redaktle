@@ -9,19 +9,11 @@ export const textToArray = (text: string) => {
 
 export const blurWords = (words: string[]) => {
     return words.map((word) => {
-        if (
-            POLISH_COMMON_WORDS.includes(word) ||
-            LETTERS_AND_PUNCTUATION_REGEX.test(word)
-        ) {
-            return {
-                word,
-                isVisible: true,
-            };
-        }
-
         return {
             word,
-            isVisible: false,
+            isVisible:
+                POLISH_COMMON_WORDS.includes(word) ||
+                LETTERS_AND_PUNCTUATION_REGEX.test(word),
         };
     });
 };
