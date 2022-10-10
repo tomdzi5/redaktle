@@ -15,13 +15,13 @@ export const blurWords = (words: string[]) => {
         ) {
             return {
                 word,
-                isGuessed: true,
+                isVisible: true,
             };
         }
 
         return {
             word,
-            isGuessed: false,
+            isVisible: false,
         };
     });
 };
