@@ -1,10 +1,6 @@
 import { styled } from '@mui/material/styles';
 
-type BlurredText = {
-    guessed: boolean;
-};
-
-export const BlurredText = styled('span')<BlurredText>`
+export const BlurredText = styled('span')`
     padding: 0;
     margin: 0;
     color: ${({ theme }) => theme.palette.primary.main};
