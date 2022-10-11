@@ -1,14 +1,12 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
 import articleReducer from '../pages/game/article/articleSlice';
 import guessReducer from '../pages/game/guess-bar/guessSlice';
 
 export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-    article: articleReducer,
-    guess: guessReducer,
-  },
+    reducer: {
+        article: articleReducer,
+        guess: guessReducer,
+    },
 });
 
 export type AppDispatch = typeof store.dispatch;

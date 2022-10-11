@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import { IconButton, Menu } from '@mui/material';
 
-import { MenuContainer, StyledMenuIcon, StyledMenuItem } from './styled';
-import { ActiveModal } from '../../types/modal';
+import { MenuContainer, StyledMenuIcon, StyledMenuItem } from './Header.styled';
+import { ActiveModal } from '../../../types/modal';
 
 type Props = {
     menuList: ActiveModal[];

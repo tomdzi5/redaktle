@@ -1,45 +1,27 @@
 import React, { useState } from 'react';
-import { styled } from '@mui/system';
-import { Box, Grid, IconButton, InputAdornment, OutlinedInput } from '@mui/material';
+
+import { Box, Grid, IconButton, InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
 import MainButton from '../../../components/MainButton';
-
-const StyledFooter = styled('footer')(({ theme }) => ({
-    position: 'fixed',
-    bottom: '0',
-    width: '100%',
-    height: '10vh',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    backgroundColor: theme.palette.primary.main,
-}));
-
-const GuessInputField = styled(OutlinedInput)({
-    backgroundColor: 'white',
-    paddingLeft: 0,
-});
+import { GuessInputField, StyledFooter } from './GuessBar.styled';
 
 type GuessBarProps = {
     onGuess: (guessText: string) => void;
 };
 
-const GuessBar = ({onGuess}: GuessBarProps) => {
+const GuessBar = ({ onGuess }: GuessBarProps) => {
     const [guessText, setGuessText] = useState('');
     const handleGuess = (event: React.SyntheticEvent) => {
         event.preventDefault();
         onGuess(guessText);
         setGuessText('');
-    }
+    };
 
     const searchIcon = (
         <InputAdornment position="start">
-            <IconButton
-                edge="end"
-                onClick={handleGuess}
-            >
-                <SearchIcon fontSize="small"/>
+            <IconButton edge="end" onClick={handleGuess}>
+                <SearchIcon fontSize="small" />
             </IconButton>
         </InputAdornment>
     );
@@ -47,23 +29,31 @@ const GuessBar = ({onGuess}: GuessBarProps) => {
     return (
         <StyledFooter>
             <Box>
-                <Grid container spacing={2} justifyContent="center" alignItems="center">
+                <Grid
+                    container
+                    spacing={2}
+                    justifyContent="center"
+                    alignItems="center"
+                >
                     <Grid item xs={12}>
                         <form onSubmit={handleGuess}>
                             <MainButton>Top</MainButton>
                             <GuessInputField
                                 value={guessText}
-                                onChange={(event) => setGuessText(event.target.value)}
+                                onChange={(event) =>
+                                    setGuessText(event.target.value)
+                                }
                                 placeholder="Guess"
                                 startAdornment={searchIcon}
-                                size="small"/>
+                                size="small"
+                            />
                             <MainButton type="submit">Guess</MainButton>
                         </form>
                     </Grid>
                 </Grid>
             </Box>
         </StyledFooter>
-    )
-}
+    );
+};
 
 export default GuessBar;
