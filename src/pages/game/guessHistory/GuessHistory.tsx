@@ -1,10 +1,4 @@
-import { styled } from '@mui/material/styles';
-import { Card } from '@mui/material';
-
-
-const StyledCard = styled(Card)`
-  flex-basis: 30%;
-`
+import { StyledCard } from './GuessHistory.styled';
 
 const GuessHistory = () => {
     return (
