@@ -8,7 +8,7 @@ type PropsType = {
 
 const Word = ({ children }: PropsType) => {
     if (children.isGuessed) {
-        return <>wordToBlur.word + ' '</>;
+        return <span>wordToBlur.word + ' '</span>;
     }
 
     const blurredWord = BLUR_CHARACTER.repeat(children.word.length);
