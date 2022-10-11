@@ -5,13 +5,13 @@ import { styled } from '@mui/material/styles';
 
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { getArticle, selectArticle } from './articleSlice';
-import { BLUR_CHARACTER, LOADING_STATUS } from '../../../utils/constants';
+import { LOADING_STATUS } from '../../../utils/constants';
 import Loader from '../../../components/Loader';
-import { WordToGuess } from '../../../types/article';
-import { BlurredText } from './styled';
+import Word from './Word';
 
 const ArticleCard = styled(Card)`
     flex-basis: 70%;
+    height: 100%;
 `;
 
 const BLURRED_ARTICLE_MOCK = {
@@ -59,35 +59,27 @@ const Article = () => {
         dispatch(getArticle());
     }, []);
 
-    const blurWords = (wordsToBlurArray: WordToGuess[]) => {
-        return wordsToBlurArray.map((wordToBlur) => {
-            if (wordToBlur.isGuessed) {
-                return wordToBlur.word + ' ';
-            }
-
-            const blurredWord = BLUR_CHARACTER.repeat(wordToBlur.word.length);
-
-            return (
-                <>
-                    <BlurredText guessed={false}>{blurredWord}</BlurredText>{' '}
-                </>
-            );
-        });
-    };
-
     return (
         <ArticleCard>
             <CardContent sx={{ m: 2 }}>
                 {article.status === LOADING_STATUS.IDLE && (
                     <>
                         <Typography variant="h2" sx={{ mb: 2 }}>
-                            {blurWords(BLURRED_ARTICLE_MOCK.data.title)}
+                            {BLURRED_ARTICLE_MOCK.data.title.map(
+                                (wordToBlur, index) => (
+                                    <Word key={index}>{wordToBlur}</Word>
+                                )
+                            )}
                         </Typography>
                         <Typography
                             variant="body1"
                             sx={{ textAlign: 'justify' }}
                         >
-                            {blurWords(BLURRED_ARTICLE_MOCK.data.text)}
+                            {BLURRED_ARTICLE_MOCK.data.text.map(
+                                (wordToBlur, index) => (
+                                    <Word key={index}>{wordToBlur}</Word>
+                                )
+                            )}
                         </Typography>
                     </>
                 )}
@@ -96,4 +88,5 @@ const Article = () => {
         </ArticleCard>
     );
 };
+
 export default Article;
