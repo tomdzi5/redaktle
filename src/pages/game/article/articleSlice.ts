@@ -3,7 +3,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchArticle } from '../../../services/apiService';
 import { LOADING_STATUS } from '../../../utils/constants';
 import { RootState } from '../../../app/store';
-import { blurWords, textToArray } from '../../../services/textService';
+import {
+    createWordsToGuessObjects,
+    textToArray,
+} from '../../../services/textService';
 import { ArticleSliceType } from '../../../types/article';
 
 const initialState: ArticleSliceType = {
@@ -32,8 +35,10 @@ export const articleSlice = createSlice({
                 state.status = LOADING_STATUS.IDLE;
                 const titleWordArray = textToArray(action.payload.title);
                 const textWordArray = textToArray(action.payload.text);
-                const titleToGuessArray = blurWords(titleWordArray);
-                const textToGuessArray = blurWords(textWordArray);
+                const titleToGuessArray =
+                    createWordsToGuessObjects(titleWordArray);
+                const textToGuessArray =
+                    createWordsToGuessObjects(textWordArray);
                 state.data = {
                     title: titleToGuessArray,
                     text: textToGuessArray,

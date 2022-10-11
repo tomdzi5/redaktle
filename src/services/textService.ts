@@ -7,7 +7,7 @@ export const textToArray = (text: string) => {
     return text.match(LETTERS_AND_PUNCTUATION_REGEX) as string[];
 };
 
-export const blurWords = (words: string[]) => {
+export const createWordsToGuessObjects = (words: string[]) => {
     return words.map((word) => {
         return {
             word,
