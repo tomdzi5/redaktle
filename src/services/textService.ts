@@ -5,7 +5,6 @@ import {
 } from '../utils/constants';
 
 export const textToArray = (text: string) => {
-    console.log(text.match(LETTERS_AND_PUNCTUATION_REGEX));
     return text.match(LETTERS_AND_PUNCTUATION_REGEX) as string[];
 };
 
