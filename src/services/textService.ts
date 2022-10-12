@@ -11,17 +11,13 @@ export const textToArray = (text: string) => {
 
 export const createWordsToGuessObjects = (words: string[]) => {
     return words.map((word) => {
-        if (word === ' ') {
-            return {
-                word,
-                isVisible: true,
-            };
-        }
+        const isSpaceChar = word === ' ';
+        const isCommonWord = POLISH_COMMON_WORDS.includes(word);
+        const isSpecialChar = PUNCTUATION_REGEX.test(word);
+
         return {
             word,
-            isVisible:
-                POLISH_COMMON_WORDS.includes(word) ||
-                PUNCTUATION_REGEX.test(word),
+            isVisible: isSpaceChar || isCommonWord || isSpecialChar,
         };
     });
 };
