@@ -8,14 +8,14 @@ type PropsType = {
 
 const Word = ({ children }: PropsType) => {
     if (children.isVisible) {
-        return <span>{children.word + ' '}</span>;
+        return <span>{children.word}</span>;
     }
 
     const blurredWord = BLUR_CHARACTER.repeat(children.word.length);
 
     return (
         <>
-            <BlurredText>{blurredWord}</BlurredText>{' '}
+            <BlurredText>{blurredWord}</BlurredText>
         </>
     );
 };

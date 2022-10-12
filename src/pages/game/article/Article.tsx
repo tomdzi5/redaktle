@@ -9,43 +9,6 @@ import Loader from '../../../components/Loader';
 import Word from './Word';
 import { ArticleCard } from '../Game.styled';
 
-const BLURRED_ARTICLE_MOCK = {
-    data: {
-        title: [
-            {
-                word: 'cześć',
-                isVisible: false,
-            },
-            {
-                word: ',',
-                isVisible: true,
-            },
-            {
-                word: 'moje',
-                isVisible: true,
-            },
-            {
-                word: 'imie',
-                isVisible: false,
-            },
-        ],
-        text: [
-            {
-                word: 'to',
-                isVisible: true,
-            },
-            {
-                word: 'bartek',
-                isVisible: false,
-            },
-            {
-                word: 'ratajczyk',
-                isVisible: false,
-            },
-        ],
-    },
-};
-
 const Article = () => {
     const article = useAppSelector(selectArticle);
     const dispatch = useAppDispatch();
@@ -60,21 +23,17 @@ const Article = () => {
                 {article.status === LOADING_STATUS.IDLE && (
                     <>
                         <Typography variant="h2" sx={{ mb: 2 }}>
-                            {BLURRED_ARTICLE_MOCK.data.title.map(
-                                (wordToBlur, index) => (
-                                    <Word key={index}>{wordToBlur}</Word>
-                                )
-                            )}
+                            {article.data.title.map((wordToBlur, index) => (
+                                <Word key={index}>{wordToBlur}</Word>
+                            ))}
                         </Typography>
                         <Typography
                             variant="body1"
                             sx={{ textAlign: 'justify' }}
                         >
-                            {BLURRED_ARTICLE_MOCK.data.text.map(
-                                (wordToBlur, index) => (
-                                    <Word key={index}>{wordToBlur}</Word>
-                                )
-                            )}
+                            {article.data.text.map((wordToBlur, index) => (
+                                <Word key={index}>{wordToBlur}</Word>
+                            ))}
                         </Typography>
                     </>
                 )}
