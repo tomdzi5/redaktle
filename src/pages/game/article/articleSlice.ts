@@ -3,11 +3,16 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchArticle } from '../../../services/apiService';
 import { LOADING_STATUS } from '../../../utils/constants';
 import { RootState } from '../../../app/store';
+import {
+    createWordsToGuessObjects,
+    textToArray,
+} from '../../../services/textService';
+import { ArticleSliceType } from '../../../types/article';
 
-const initialState = {
+const initialState: ArticleSliceType = {
     data: {
-        title: '',
-        text: '',
+        title: [],
+        text: [],
     },
     status: LOADING_STATUS.IDLE,
 };
@@ -28,7 +33,16 @@ export const articleSlice = createSlice({
             })
             .addCase(getArticle.fulfilled, (state, action) => {
                 state.status = LOADING_STATUS.IDLE;
-                state.data = action.payload;
+                const titleWordArray = textToArray(action.payload.title);
+                const textWordArray = textToArray(action.payload.text);
+                const titleToGuessArray =
+                    createWordsToGuessObjects(titleWordArray);
+                const textToGuessArray =
+                    createWordsToGuessObjects(textWordArray);
+                state.data = {
+                    title: titleToGuessArray,
+                    text: textToGuessArray,
+                };
             })
             .addCase(getArticle.rejected, (state) => {
                 state.status = LOADING_STATUS.FAILED;

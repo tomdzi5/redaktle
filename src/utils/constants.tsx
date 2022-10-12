@@ -18,3 +18,9 @@ export const MODALS_CONTENT = {
         content: <p>Settings modal content</p>,
     },
 };
+
+export const LETTERS_AND_PUNCTUATION_REGEX = /\w+|\s+|[^\s\w]+/g;
+
+export const POLISH_COMMON_WORDS = ['w', 'też', 'jako'];
+
+export const BLUR_CHARACTER = '*';
