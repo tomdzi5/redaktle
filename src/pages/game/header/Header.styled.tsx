@@ -12,7 +12,7 @@ export const HeaderContainer = styled(AppBar)`
     position: sticky;
     top: 0;
     width: 100%;
-    height: 3rem;
+    height: 10vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

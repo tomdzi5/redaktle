@@ -8,7 +8,7 @@ import {
     ArticleContainer,
     StyledGrid,
 } from './Game.styled';
-import GuessHistory from './guessHistory/GuessHistory';
+import GuessHistory from './guess-history/GuessHistory';
 
 const Game = () => {
     const dispatch = useAppDispatch();
