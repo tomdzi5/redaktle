@@ -7,7 +7,6 @@ import { getArticle, selectArticle } from './articleSlice';
 import { LOADING_STATUS } from '../../../utils/constants';
 import Loader from '../../../components/Loader';
 import Word from './Word';
-import { ArticleCard } from '../Game.styled';
 
 const Article = () => {
     const article = useAppSelector(selectArticle);
@@ -18,7 +17,6 @@ const Article = () => {
     }, []);
 
     return (
-        <ArticleCard>
             <CardContent sx={{ m: 2 }}>
                 {article.status === LOADING_STATUS.IDLE && (
                     <>
@@ -39,7 +37,6 @@ const Article = () => {
                 )}
                 {article.status === LOADING_STATUS.LOADING && <Loader />}
             </CardContent>
-        </ArticleCard>
     );
 };
 

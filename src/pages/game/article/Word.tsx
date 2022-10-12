@@ -1,6 +1,6 @@
 import { WordToGuess } from '../../../types/article';
 import { BLUR_CHARACTER } from '../../../utils/constants';
-import { BlurredText } from './styled';
+import { BlurredText } from './Word.styled';
 
 type PropsType = {
     children: WordToGuess;
