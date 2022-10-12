@@ -1,14 +1,15 @@
+import { Card } from '@mui/material';
+
 import Header from './header';
 import Article from './article';
 import GuessBar from './guess-bar';
 import { useAppDispatch } from '../../app/hooks';
 import { setGuessText } from './guess-bar/guessSlice';
 import {
-    ArticleCard,
     ArticleContainer,
-    StyledCard,
     StyledGrid,
 } from './Game.styled';
+import GuessHistory from './guess-history/GuessHistory';
 
 const Game = () => {
     const dispatch = useAppDispatch();
@@ -24,13 +25,13 @@ const Game = () => {
                     container
                     sx={{ flexDirection: { xs: 'column', md: 'row' } }}
                 >
-                    <ArticleCard>
+                    <Card sx={{ flexBasis: { xs: '60%', md: '70%' }}}>
                         <Article />
                         <GuessBar
                             onGuess={(guessText) => handleGuess(guessText)}
                         />
-                    </ArticleCard>
-                    <StyledCard>guess list</StyledCard>
+                    </Card>
+                    <GuessHistory />
                 </StyledGrid>
             </ArticleContainer>
         </>

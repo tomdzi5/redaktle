@@ -1,17 +1,10 @@
-import { Card, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 export const StyledGrid = styled(Grid)`
-    height: 100%;
+    max-height: 80vh;
+    height: 80vh;
     justify-content: space-between;
-`;
-
-export const StyledCard = styled(Card)`
-    flex-basis: 30%;
-`;
-
-export const ArticleCard = styled(Card)`
-    flex-basis: 70%;
 `;
 
 export const ArticleContainer = styled('div')`
