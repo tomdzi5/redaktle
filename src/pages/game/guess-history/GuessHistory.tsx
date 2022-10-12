@@ -1,22 +1,21 @@
-import { StyledCard } from './GuessHistory.styled';
+import { Card, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+
+import { HeaderCell, StyledCard } from './GuessHistory.styled';
 import { useAppSelector } from '../../../app/hooks';
 import { selectGuessHistory } from './guessHistorySlice';
-import { Card, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
 const GuessHistory = () => {
     const guessHistory = useAppSelector(selectGuessHistory);
-    // scroll
-    // flex zalezny od rozmiaru
-    // dense
+
     return (
-        <StyledCard>
+        <StyledCard sx={{ flexBasis: { xs: '50%', md: '30%' }, maxHeight: { xs: '40vh', md: '80vh' }}}>
             <TableContainer component={Card} sx={{ height: '100%', overflow: 'auto' }}>
-                <Table aria-label="guess table" sticky-header>
+                <Table size="small" aria-label="guess table" stickyHeader>
                     <TableHead>
                         <TableRow>
-                            <TableCell width="25%">#</TableCell>
-                            <TableCell align="left" width="45%">Guess</TableCell>
-                            <TableCell align="left" width="30%">Hits</TableCell>
+                            <HeaderCell width="25%">#</HeaderCell>
+                            <HeaderCell align="left" width="45%">Guess</HeaderCell>
+                            <HeaderCell align="left" width="30%">Hits</HeaderCell>
                         </TableRow>
                     </TableHead>
                     { guessHistory.words && <TableBody>

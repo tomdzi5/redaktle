@@ -1,9 +1,10 @@
 import { styled } from '@mui/material/styles';
-import { Card } from '@mui/material';
+import { Card, TableCell } from '@mui/material';
 
 export const StyledCard = styled(Card)`
-  flex-basis: 30%;
-  height: 80vh;
-  max-height: 80vh;
   overflow: auto;
+`
+
+export const HeaderCell = styled(TableCell)`
+    font-weight: bold;
 `
