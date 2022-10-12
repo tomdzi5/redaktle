@@ -8,7 +8,7 @@ const GuessHistory = () => {
     const guessHistory = useAppSelector(selectGuessHistory);
 
     return (
-        <StyledCard sx={{ flexBasis: { xs: '50%', md: '30%' }, maxHeight: { xs: '40vh', md: '80vh' }}}>
+        <StyledCard sx={{ flexBasis: { xs: '40%', md: '30%' }, maxHeight: { xs: '36vh', md: '80vh' }}}>
             <TableContainer component={Card} sx={{ height: '100%', overflow: 'auto' }}>
                 <Table size="small" aria-label="guess table" stickyHeader>
                     <TableHead>
