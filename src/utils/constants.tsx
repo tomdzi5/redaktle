@@ -22,7 +22,7 @@ export const MODALS_CONTENT = {
 export const LETTERS_AND_PUNCTUATION_REGEX = /\w+|\s+|[^\s\w]+/g;
 
 export const PUNCTUATION_REGEX =
-    /[!\"#\＄%&\'\(\)\*\+,-\./:;<=>\?@\[\\\]\^_`{\|}~]/g;
+    /[!"#＄%&'()*+,-.:;<=>?@[\]^_`{|}~]+/g;
 
 export const POLISH_COMMON_WORDS = ['w', 'też', 'jako'];
 

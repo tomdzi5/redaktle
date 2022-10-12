@@ -5,10 +5,7 @@ import Article from './article';
 import GuessBar from './guess-bar';
 import { useAppDispatch } from '../../app/hooks';
 import { setGuessText } from './guess-bar/guessSlice';
-import {
-    ArticleContainer,
-    StyledGrid,
-} from './Game.styled';
+import { ArticleContainer, StyledGrid } from './Game.styled';
 import GuessHistory from './guess-history/GuessHistory';
 
 const Game = () => {
@@ -25,7 +22,7 @@ const Game = () => {
                     container
                     sx={{ flexDirection: { xs: 'column', md: 'row' } }}
                 >
-                    <Card sx={{ flexBasis: { xs: '60%', md: '70%' }}}>
+                    <Card sx={{ flexBasis: { xs: '60%', md: '70%' } }}>
                         <Article />
                         <GuessBar
                             onGuess={(guessText) => handleGuess(guessText)}
