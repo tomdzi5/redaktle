@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { fetchArticle } from '../../../services/apiService';
 import { LOADING_STATUS } from '../../../utils/constants';
@@ -7,7 +7,15 @@ import {
     createWordsToGuessObjects,
     textToArray,
 } from '../../../services/textService';
-import { ArticleSliceType } from '../../../types/article';
+import { ArticleSliceType, WordToGuess } from '../../../types/article';
+import { setGuessText } from '../guess-bar/guessSlice';
+
+const createGuessValidatedWord = (word: string, guess: string): WordToGuess => {
+    return {
+        word,
+        isVisible: word.toLocaleLowerCase() === guess.toLocaleLowerCase(),
+    };
+};
 
 const initialState: ArticleSliceType = {
     data: {
@@ -46,6 +54,21 @@ export const articleSlice = createSlice({
             })
             .addCase(getArticle.rejected, (state) => {
                 state.status = LOADING_STATUS.FAILED;
+            })
+            .addCase(setGuessText, (state, action: PayloadAction<string>) => {
+                const guess = action.payload;
+                const titleArray = state.data.title.map(({ word }) =>
+                    createGuessValidatedWord(word, guess)
+                );
+
+                const textArray = state.data.text.map(({ word }) =>
+                    createGuessValidatedWord(word, guess)
+                );
+
+                state.data = {
+                    title: titleArray,
+                    text: textArray,
+                };
             });
     },
 });
