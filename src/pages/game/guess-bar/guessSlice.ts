@@ -1,22 +1,22 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-// import { RootState } from '../../../app/store';
+import { RootState } from '../../../app/store';
 
 const initialState = {
     text: '',
-}
+};
 
 export const guessSlice = createSlice({
     name: 'guess',
     initialState,
-    reducers : {
+    reducers: {
         setGuessText: (state, action: PayloadAction<string>) => {
             state.text = action.payload;
         },
     },
 });
 
-// export const selectGuess = (state: RootState) => state.guess;
+export const selectGuess = (state: RootState) => state.guess;
 
 export const { setGuessText } = guessSlice.actions;
 
