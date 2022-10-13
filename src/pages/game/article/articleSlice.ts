@@ -10,10 +10,15 @@ import {
 import { ArticleSliceType, WordToGuess } from '../../../types/article';
 import { setGuessText } from '../guess-bar/guessSlice';
 
-const createGuessValidatedWord = (word: string, guess: string): WordToGuess => {
+const createGuessValidatedWord = (
+    { word, isVisible }: WordToGuess,
+    guess: string
+): WordToGuess => {
+    const isWordGuessed =
+        word.toLocaleLowerCase() === guess.toLocaleLowerCase();
     return {
         word,
-        isVisible: word.toLocaleLowerCase() === guess.toLocaleLowerCase(),
+        isVisible: isVisible || isWordGuessed,
     };
 };
 
@@ -57,12 +62,12 @@ export const articleSlice = createSlice({
             })
             .addCase(setGuessText, (state, action: PayloadAction<string>) => {
                 const guess = action.payload;
-                const titleArray = state.data.title.map(({ word }) =>
-                    createGuessValidatedWord(word, guess)
+                const titleArray = state.data.title.map((wordToGuess) =>
+                    createGuessValidatedWord(wordToGuess, guess)
                 );
 
-                const textArray = state.data.text.map(({ word }) =>
-                    createGuessValidatedWord(word, guess)
+                const textArray = state.data.text.map((wordToGuess) =>
+                    createGuessValidatedWord(wordToGuess, guess)
                 );
 
                 state.data = {
