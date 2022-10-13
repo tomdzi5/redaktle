@@ -7,19 +7,11 @@ import {
     createWordsToGuessObjects,
     textToArray,
 } from '../../../services/textService';
-import { ArticleSliceType, WordToGuess } from '../../../types/article';
+import { ArticleSliceType } from '../../../types/article';
 import { setGuessText } from '../guess-bar/guessSlice';
 
-const isWordGuessedCheck = (wordToGuess: WordToGuess, guess: string) => {
-    if (wordToGuess.word.toLocaleLowerCase() === guess.toLocaleLowerCase()) {
-        return {
-            word: wordToGuess.word,
-            isVisible: true,
-        };
-    }
-
-    return wordToGuess;
-};
+const isWordGuessed = (word: string, guess: string) =>
+    word.toLocaleLowerCase() === guess.toLocaleLowerCase();
 
 const initialState: ArticleSliceType = {
     data: {
@@ -61,12 +53,18 @@ export const articleSlice = createSlice({
             })
             .addCase(setGuessText, (state, action: PayloadAction<string>) => {
                 const guess = action.payload;
-                const titleArray = state.data.title.map((wordToGuess) => {
-                    return isWordGuessedCheck(wordToGuess, guess);
+                const titleArray = state.data.title.map(({ word }) => {
+                    return {
+                        word: word,
+                        isVisible: isWordGuessed(word, guess),
+                    };
                 });
 
-                const textArray = state.data.text.map((wordToGuess) => {
-                    return isWordGuessedCheck(wordToGuess, guess);
+                const textArray = state.data.text.map(({ word }) => {
+                    return {
+                        word: word,
+                        isVisible: isWordGuessed(word, guess),
+                    };
                 });
 
                 state.data = {
