@@ -12,7 +12,7 @@ import { setGuessText } from '../guess-bar/guessSlice';
 
 const createGuessValidatedWord = (word: string, guess: string): WordToGuess => {
     return {
-        word: word,
+        word,
         isVisible: word.toLocaleLowerCase() === guess.toLocaleLowerCase(),
     };
 };
