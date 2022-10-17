@@ -23,11 +23,13 @@ export const createWordsToGuessObjects = (words: string[]) => {
 };
 
 export const createGuessValidatedWord = (
-    word: string,
+    { word, isVisible }: WordToGuess,
     guess: string
 ): WordToGuess => {
+    const isWordGuessed =
+        word.toLocaleLowerCase() === guess.toLocaleLowerCase();
     return {
         word,
-        isVisible: word.toLocaleLowerCase() === guess.toLocaleLowerCase(),
+        isVisible: isVisible || isWordGuessed,
     };
 };

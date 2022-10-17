@@ -36,6 +36,7 @@ export const gameWonSlice = createSlice({
                 const titleToGuessArray =
                     createWordsToGuessObjects(titleWordArray);
 
+                console.log(state);
                 return (state = {
                     title: titleToGuessArray,
                     isGameWon: false,
@@ -44,8 +45,8 @@ export const gameWonSlice = createSlice({
             .addCase(setGuessText, (state, action: PayloadAction<string>) => {
                 const guessedWord = action.payload;
 
-                const titleArray = state.title.map(({ word }) => {
-                    return createGuessValidatedWord(word, guessedWord);
+                const titleArray = state.title.map((wordToGuess) => {
+                    return createGuessValidatedWord(wordToGuess, guessedWord);
                 });
 
                 return (state = {

@@ -11,6 +11,7 @@ import {
 import { ArticleSliceType } from '../../../types/article';
 import { setGuessText } from '../guess-bar/guessSlice';
 
+
 const initialState: ArticleSliceType = {
     data: {
         title: [],
@@ -51,12 +52,12 @@ export const articleSlice = createSlice({
             })
             .addCase(setGuessText, (state, action: PayloadAction<string>) => {
                 const guess = action.payload;
-                const titleArray = state.data.title.map(({ word }) =>
-                    createGuessValidatedWord(word, guess)
+                const titleArray = state.data.title.map((wordToGuess) =>
+                    createGuessValidatedWord(wordToGuess, guess)
                 );
 
-                const textArray = state.data.text.map(({ word }) =>
-                    createGuessValidatedWord(word, guess)
+                const textArray = state.data.text.map((wordToGuess) =>
+                    createGuessValidatedWord(wordToGuess, guess)
                 );
 
                 state.data = {
