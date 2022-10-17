@@ -17,26 +17,23 @@ const Article = () => {
     }, []);
 
     return (
-            <CardContent sx={{ m: 2 }}>
-                {article.status === LOADING_STATUS.IDLE && (
-                    <>
-                        <Typography variant="h2" sx={{ mb: 2 }}>
-                            {article.data.title.map((wordToBlur, index) => (
-                                <Word key={index}>{wordToBlur}</Word>
-                            ))}
-                        </Typography>
-                        <Typography
-                            variant="body1"
-                            sx={{ textAlign: 'justify' }}
-                        >
-                            {article.data.text.map((wordToBlur, index) => (
-                                <Word key={index}>{wordToBlur}</Word>
-                            ))}
-                        </Typography>
-                    </>
-                )}
-                {article.status === LOADING_STATUS.LOADING && <Loader />}
-            </CardContent>
+        <CardContent sx={{ m: 2, overflowY: 'scroll' }}>
+            {article.status === LOADING_STATUS.IDLE && (
+                <>
+                    <Typography variant="h2" sx={{ mb: 2 }}>
+                        {article.data.title.map((wordToBlur, index) => (
+                            <Word key={index}>{wordToBlur}</Word>
+                        ))}
+                    </Typography>
+                    <Typography variant="body1" sx={{ textAlign: 'justify' }}>
+                        {article.data.text.map((wordToBlur, index) => (
+                            <Word key={index}>{wordToBlur}</Word>
+                        ))}
+                    </Typography>
+                </>
+            )}
+            {article.status === LOADING_STATUS.LOADING && <Loader />}
+        </CardContent>
     );
 };
 
