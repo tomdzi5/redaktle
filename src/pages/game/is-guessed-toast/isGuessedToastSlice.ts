@@ -37,7 +37,7 @@ export const guessedWordsSlice = createSlice({
                 const isAlreadyGuessed =
                     state.guessedWords.includes(action.payload) ||
                     POLISH_COMMON_WORDS.includes(action.payload);
-                    
+
                 return (state = {
                     guessedWords: isAlreadyGuessed
                         ? state.guessedWords
