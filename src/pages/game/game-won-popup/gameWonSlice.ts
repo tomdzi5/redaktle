@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../../../app/store';
 
 import {
     createGuessValidatedWord,
@@ -28,7 +29,11 @@ const initialState: GameWonSliceType = {
 export const gameWonSlice = createSlice({
     name: 'gameWon',
     initialState,
-    reducers: {},
+    reducers: {
+        resetGame: (state) => {
+            state.isGameWon = false;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getArticle.fulfilled, (state, action) => {
@@ -56,5 +61,9 @@ export const gameWonSlice = createSlice({
             });
     },
 });
+
+export const selectGameWon = (state: RootState) => state.gameWon;
+
+export const { resetGame } = gameWonSlice.actions;
 
 export default gameWonSlice.reducer;

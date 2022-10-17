@@ -7,11 +7,17 @@ import { useAppDispatch } from '../../app/hooks';
 import { setGuessText } from './guess-bar/guessSlice';
 import { ArticleContainer, StyledGrid } from './Game.styled';
 import GuessHistory from './guess-history/GuessHistory';
+import GameWonPopup from './game-won-popup';
+import { resetGame } from './game-won-popup/gameWonSlice';
 
 const Game = () => {
     const dispatch = useAppDispatch();
     const handleGuess = (guessText: string): void => {
         dispatch(setGuessText(guessText));
+    };
+
+    const onCloseGameWonPopup = () => {
+        dispatch(resetGame());
     };
 
     return (
@@ -30,6 +36,7 @@ const Game = () => {
                     </Card>
                     <GuessHistory />
                 </StyledGrid>
+                <GameWonPopup onClose={onCloseGameWonPopup} />
             </ArticleContainer>
         </>
     );
