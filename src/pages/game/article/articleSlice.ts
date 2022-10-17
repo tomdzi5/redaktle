@@ -4,18 +4,12 @@ import { fetchArticle } from '../../../services/apiService';
 import { LOADING_STATUS } from '../../../utils/constants';
 import { RootState } from '../../../app/store';
 import {
+    createGuessValidatedWord,
     createWordsToGuessObjects,
     textToArray,
 } from '../../../services/textService';
-import { ArticleSliceType, WordToGuess } from '../../../types/article';
+import { ArticleSliceType } from '../../../types/article';
 import { setGuessText } from '../guess-bar/guessSlice';
-
-const createGuessValidatedWord = (word: string, guess: string): WordToGuess => {
-    return {
-        word,
-        isVisible: word.toLocaleLowerCase() === guess.toLocaleLowerCase(),
-    };
-};
 
 const initialState: ArticleSliceType = {
     data: {
