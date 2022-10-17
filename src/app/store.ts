@@ -2,12 +2,14 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import articleReducer from '../pages/game/article/articleSlice';
 import guessReducer from '../pages/game/guess-bar/guessSlice';
 import guessHistoryReducer from '../pages/game/guess-history/guessHistorySlice';
+import guessedWordsReducer from '../pages/game/is-guessed-toast/isGuessedToastSlice';
 
 export const store = configureStore({
     reducer: {
         article: articleReducer,
         guess: guessReducer,
         guessHistory: guessHistoryReducer,
+        guessedWords: guessedWordsReducer,
     },
 });
 
