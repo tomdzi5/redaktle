@@ -1,4 +1,3 @@
-import { WordToGuess } from '../types/article';
 import {
     POLISH_COMMON_WORDS,
     LETTERS_AND_PUNCTUATION_REGEX,
@@ -20,16 +19,4 @@ export const createWordsToGuessObjects = (words: string[]) => {
             isVisible: isSpaceChar || isCommonWord || isSpecialChar,
         };
     });
-};
-
-export const createGuessValidatedWord = (
-    { word, isVisible }: WordToGuess,
-    guess: string
-): WordToGuess => {
-    const isWordGuessed =
-        word.toLocaleLowerCase() === guess.toLocaleLowerCase();
-    return {
-        word,
-        isVisible: isVisible || isWordGuessed,
-    };
 };

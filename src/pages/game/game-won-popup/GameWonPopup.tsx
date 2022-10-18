@@ -2,7 +2,8 @@ import { Typography, Modal } from '@mui/material';
 import { ModalContainer } from './GameWonPopup.styled';
 import Confetti from 'react-confetti';
 import { useAppSelector, useWindowSize } from '../../../app/hooks';
-import { selectGameWon } from './gameWonSlice';
+import { selectArticle } from '../article/articleSlice';
+
 
 type PropsType = {
     onClose: () => void;
@@ -10,7 +11,7 @@ type PropsType = {
 
 const GameWonPopup = ({ onClose }: PropsType) => {
     const { width, height } = useWindowSize();
-    const { isGameWon } = useAppSelector(selectGameWon);
+    const { isGameWon } = useAppSelector(selectArticle);
 
     return (
         <>

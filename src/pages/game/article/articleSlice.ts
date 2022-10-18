@@ -4,20 +4,41 @@ import { fetchArticle } from '../../../services/apiService';
 import { LOADING_STATUS } from '../../../utils/constants';
 import { RootState } from '../../../app/store';
 import {
-    createGuessValidatedWord,
     createWordsToGuessObjects,
     textToArray,
 } from '../../../services/textService';
-import { ArticleSliceType } from '../../../types/article';
+import { ArticleSliceType, WordToGuess } from '../../../types/article';
 import { setGuessText } from '../guess-bar/guessSlice';
-
 
 const initialState: ArticleSliceType = {
     data: {
         title: [],
         text: [],
     },
+    isGameWon: false,
     status: LOADING_STATUS.IDLE,
+};
+
+const checkIfGameWon = (titleArray: WordToGuess[]) => {
+    let counter = 0;
+
+    titleArray.forEach(({ isVisible }) => {
+        if (isVisible) counter++;
+    });
+
+    return counter === titleArray.length;
+};
+
+const createGuessValidatedWord = (
+    { word, isVisible }: WordToGuess,
+    guess: string
+): WordToGuess => {
+    const isWordGuessed =
+        word.toLocaleLowerCase() === guess.toLocaleLowerCase();
+    return {
+        word,
+        isVisible: isVisible || isWordGuessed,
+    };
 };
 
 export const getArticle = createAsyncThunk('game/getArticle', async () => {
@@ -28,7 +49,11 @@ export const getArticle = createAsyncThunk('game/getArticle', async () => {
 export const articleSlice = createSlice({
     name: 'article',
     initialState,
-    reducers: {},
+    reducers: {
+        resetGame: (state) => {
+            state.isGameWon = false;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getArticle.pending, (state) => {
@@ -60,13 +85,21 @@ export const articleSlice = createSlice({
                     createGuessValidatedWord(wordToGuess, guess)
                 );
 
-                state.data = {
-                    title: titleArray,
-                    text: textArray,
-                };
+                console.log(titleArray);
+
+                return (state = {
+                    data: {
+                        title: titleArray,
+                        text: textArray,
+                    },
+                    isGameWon: checkIfGameWon(titleArray),
+                    status: LOADING_STATUS.IDLE,
+                });
             });
     },
 });
+
+export const { resetGame } = articleSlice.actions;
 
 export const selectArticle = (state: RootState) => state.article;
 
