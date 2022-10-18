@@ -36,7 +36,8 @@ const Game = () => {
                     <Card
                         sx={{
                             flexBasis: { xs: '60%', md: '70%' },
-                            overflowY: 'scroll',
+                            height: '100%',
+                            overflowY: 'auto',
                         }}
                         ref={articleCartRef}
                     >
