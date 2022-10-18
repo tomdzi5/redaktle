@@ -17,7 +17,7 @@ const Article = () => {
     }, []);
 
     return (
-        <CardContent sx={{ m: 2, overflowY: 'scroll' }}>
+        <CardContent sx={{ m: 2 }}>
             {article.status === LOADING_STATUS.IDLE && (
                 <>
                     <Typography variant="h2" sx={{ mb: 2 }}>
