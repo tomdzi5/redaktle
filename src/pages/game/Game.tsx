@@ -4,11 +4,10 @@ import Header from './header';
 import Article from './article';
 import GuessBar from './guess-bar';
 import { useAppDispatch } from '../../app/hooks';
-import { setGuessText } from './guess-bar/guessSlice';
+import { resetGame, setGuessText } from './guess-bar/guessSlice';
 import { ArticleContainer, StyledGrid } from './Game.styled';
 import GuessHistory from './guess-history/GuessHistory';
-import AlreadyGuessedToast from './is-guessed-toast';
-import { setAlreadyGuessedState } from './is-guessed-toast/isGuessedToastSlice';
+import AlreadyGuessedToast from './already-guessed-toast';
 
 const Game = () => {
     const dispatch = useAppDispatch();
@@ -17,7 +16,7 @@ const Game = () => {
     };
 
     const onToastCloseHandler = () => {
-        dispatch(setAlreadyGuessedState(false));
+        dispatch(resetGame());
     };
 
     return (

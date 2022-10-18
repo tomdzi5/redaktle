@@ -1,4 +1,4 @@
-export type isGuessedToastSliceType = {
+export type guessStateType = {
     guessedWords: string[];
     isAlreadyGuessed: boolean;
 };

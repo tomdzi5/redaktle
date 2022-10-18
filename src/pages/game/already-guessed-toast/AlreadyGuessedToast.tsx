@@ -1,7 +1,8 @@
-import { Alert, Snackbar } from '@mui/material';
+import { Snackbar } from '@mui/material';
 
 import { useAppSelector } from '../../../app/hooks';
-import { selectGuessedWords } from './isGuessedToastSlice';
+import { selectGuess } from '../guess-bar/guessSlice';
+import { AlreadyGuessedAlert } from './AlreadyGuessedToast.styled';
 
 type PropsType = {
     autoHideDuration: number;
@@ -9,18 +10,19 @@ type PropsType = {
 };
 
 const AlreadyGuessedToast = ({ autoHideDuration, onToastClose }: PropsType) => {
-    const { isAlreadyGuessed } = useAppSelector(selectGuessedWords);
+    const { isAlreadyGuessed } = useAppSelector(selectGuess);
 
     return (
         <Snackbar
             open={isAlreadyGuessed}
             autoHideDuration={autoHideDuration}
             onClose={onToastClose}
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            sx={{ marginTop: '9vh' }}
         >
-            <Alert severity="warning" onClose={onToastClose}>
+            <AlreadyGuessedAlert severity="info" onClose={onToastClose}>
                 Word already guessed or is too common.
-            </Alert>
+            </AlreadyGuessedAlert>
         </Snackbar>
     );
 };
