@@ -6,6 +6,7 @@ import { POLISH_COMMON_WORDS } from '../../../utils/constants';
 
 const initialState: guessStateType = {
     guessedWords: [],
+    guessHistory: [],
     isAlreadyGuessed: false,
 };
 
@@ -20,6 +21,7 @@ export const guessSlice = createSlice({
             if (state.guessedWords.length === 0) {
                 return (state = {
                     guessedWords: updatedGuessWordsArray,
+                    guessHistory: state.guessHistory,
                     isAlreadyGuessed: false,
                 });
             }
@@ -32,6 +34,7 @@ export const guessSlice = createSlice({
                 guessedWords: isAlreadyGuessed
                     ? state.guessedWords
                     : updatedGuessWordsArray,
+                guessHistory: state.guessHistory,
                 isAlreadyGuessed,
             });
         },
