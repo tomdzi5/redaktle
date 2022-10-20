@@ -40,7 +40,7 @@ export const articleSlice = createSlice({
     name: 'article',
     initialState,
     reducers: {
-        onGameWonModalClose: (state) => {
+        handleGameWonModalClose: (state) => {
             state.isGameWon = false;
         },
     },
@@ -87,7 +87,7 @@ export const articleSlice = createSlice({
     },
 });
 
-export const { onGameWonModalClose } = articleSlice.actions;
+export const { handleGameWonModalClose } = articleSlice.actions;
 
 export const selectArticle = (state: RootState) => state.article;
 

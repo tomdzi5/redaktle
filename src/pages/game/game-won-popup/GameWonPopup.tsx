@@ -12,7 +12,7 @@ const GameWonPopup = ({ onClose }: PropsType) => {
     const { width, height } = useWindowSize();
     const { isGameWon } = useAppSelector(selectArticle);
 
-    const confettiColors = [
+    const CONFETTI_COLORS = [
         '#eaecf0',
         '#f8f9fa',
         '#d1dbdf',
@@ -27,7 +27,7 @@ const GameWonPopup = ({ onClose }: PropsType) => {
                 <Confetti
                     width={width}
                     height={height}
-                    colors={confettiColors}
+                    colors={CONFETTI_COLORS}
                 />
             )}
             <Modal

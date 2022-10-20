@@ -3,8 +3,8 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import type { RootState, AppDispatch } from './store';
 
 type WindowTypeSize = {
-    width: number | undefined;
-    height: number | undefined;
+    width: number;
+    height: number;
 };
 
 export const useWindowSize = (): WindowTypeSize => {

@@ -8,7 +8,7 @@ import { setGuessText } from './guess-bar/guessSlice';
 import { ArticleContainer, StyledGrid } from './Game.styled';
 import GuessHistory from './guess-history/GuessHistory';
 import GameWonPopup from './game-won-popup';
-import { onGameWonModalClose } from './article/articleSlice';
+import { handleGameWonModalClose } from './article/articleSlice';
 
 const Game = () => {
     const dispatch = useAppDispatch();
@@ -16,8 +16,8 @@ const Game = () => {
         dispatch(setGuessText(guessText));
     };
 
-    const onCloseGameWonPopup = () => {
-        dispatch(onGameWonModalClose());
+    const handleGameWonModalClose = () => {
+        dispatch(handleGameWonModalClose());
     };
 
     return (
@@ -36,7 +36,7 @@ const Game = () => {
                     </Card>
                     <GuessHistory />
                 </StyledGrid>
-                <GameWonPopup onClose={onCloseGameWonPopup} />
+                <GameWonPopup onClose={handleGameWonModalClose} />
             </ArticleContainer>
         </>
     );
