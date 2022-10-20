@@ -1,18 +1,9 @@
-import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { ModalContainer } from '../../../components/AppModal/AppModal.styled';
 
-export const ModalContainer = styled(Box)`
-    position: absolute;
-    background-color: ${({ theme }) => theme.palette.primary.light};
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+export const EndGameModalContainer = styled(ModalContainer)`
     width: 60vw;
     height: 50vh;
-    border-radius: 0.6rem;
-    overflow: hidden;
-    border: none;
-    outline: none;
     z-index: 2;
 
     display: flex;

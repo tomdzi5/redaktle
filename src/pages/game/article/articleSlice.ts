@@ -40,7 +40,7 @@ export const articleSlice = createSlice({
     name: 'article',
     initialState,
     reducers: {
-        resetGame: (state) => {
+        onGameWonModalClose: (state) => {
             state.isGameWon = false;
         },
     },
@@ -75,19 +75,19 @@ export const articleSlice = createSlice({
                     createGuessValidatedWord(wordToGuess, guess)
                 );
 
-                return (state = {
+                return {
                     data: {
                         title: titleArray,
                         text: textArray,
                     },
                     isGameWon: titleArray.every(({ isVisible }) => isVisible),
                     status: LOADING_STATUS.IDLE,
-                });
+                };
             });
     },
 });
 
-export const { resetGame } = articleSlice.actions;
+export const { onGameWonModalClose } = articleSlice.actions;
 
 export const selectArticle = (state: RootState) => state.article;
 

@@ -9,8 +9,8 @@ type WindowTypeSize = {
 
 export const useWindowSize = (): WindowTypeSize => {
     const [windowSize, setWindowsSize] = useState<WindowTypeSize>({
-        width: undefined,
-        height: undefined,
+        width: window.innerWidth,
+        height: window.innerHeight,
     });
 
     useEffect(() => {
@@ -22,8 +22,6 @@ export const useWindowSize = (): WindowTypeSize => {
         };
 
         window.addEventListener('resize', handleResize);
-
-        handleResize();
 
         return () => window.removeEventListener('resize', handleResize);
     }, []);
