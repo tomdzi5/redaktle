@@ -19,16 +19,6 @@ const initialState: ArticleSliceType = {
     status: LOADING_STATUS.IDLE,
 };
 
-const checkIfGameWon = (titleArray: WordToGuess[]) => {
-    let counter = 0;
-
-    titleArray.forEach(({ isVisible }) => {
-        if (isVisible) counter++;
-    });
-
-    return counter === titleArray.length;
-};
-
 const createGuessValidatedWord = (
     { word, isVisible }: WordToGuess,
     guess: string
@@ -85,14 +75,12 @@ export const articleSlice = createSlice({
                     createGuessValidatedWord(wordToGuess, guess)
                 );
 
-                console.log(titleArray);
-
                 return (state = {
                     data: {
                         title: titleArray,
                         text: textArray,
                     },
-                    isGameWon: checkIfGameWon(titleArray),
+                    isGameWon: titleArray.every(({ isVisible }) => isVisible),
                     status: LOADING_STATUS.IDLE,
                 });
             });
