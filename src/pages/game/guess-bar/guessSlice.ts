@@ -4,9 +4,17 @@ import { RootState } from '../../../app/store';
 import { guessStateType } from '../../../types/guessStateType';
 import { POLISH_COMMON_WORDS } from '../../../utils/constants';
 
+const MOCK_HISTORY = [
+    {
+        value: '1',
+        id: 'id1',
+        order: '1',
+        hits: 2,
+    },
+];
+
 const initialState: guessStateType = {
-    guessedWords: [],
-    guessHistory: [],
+    guessHistory: MOCK_HISTORY,
     isAlreadyGuessed: false,
 };
 
@@ -16,29 +24,29 @@ export const guessSlice = createSlice({
     reducers: {
         setGuessText: (state, action: PayloadAction<string>) => {
             const guessedWord = action.payload;
-            const updatedGuessWordsArray = [...state.guessedWords, guessedWord];
-
-            if (state.guessedWords.length === 0) {
-                return (state = {
-                    guessedWords: updatedGuessWordsArray,
-                    guessHistory: state.guessHistory,
-                    isAlreadyGuessed: false,
-                });
-            }
+            const updatedGuessWordsArray = [
+                ...state.guessHistory,
+                {
+                    value: guessedWord,
+                    id: '0',
+                    order: '0',
+                    hits: 1,
+                }, // mock of guess object for convinience
+            ];
 
             const isAlreadyGuessed =
-                state.guessedWords.includes(action.payload) ||
-                POLISH_COMMON_WORDS.includes(action.payload);
+                !!state.guessHistory.find(
+                    ({ value }) => value === action.payload
+                ) || POLISH_COMMON_WORDS.includes(action.payload);
 
-            return (state = {
-                guessedWords: isAlreadyGuessed
-                    ? state.guessedWords
+            return {
+                guessHistory: isAlreadyGuessed
+                    ? state.guessHistory
                     : updatedGuessWordsArray,
-                guessHistory: state.guessHistory,
                 isAlreadyGuessed,
-            });
+            };
         },
-        resetGame: (state) => {
+        onToastClose: (state) => {
             state.isAlreadyGuessed = false;
         },
     },
@@ -46,6 +54,6 @@ export const guessSlice = createSlice({
 
 export const selectGuess = (state: RootState) => state.guess;
 
-export const { setGuessText, resetGame } = guessSlice.actions;
+export const { setGuessText, onToastClose } = guessSlice.actions;
 
 export default guessSlice.reducer;

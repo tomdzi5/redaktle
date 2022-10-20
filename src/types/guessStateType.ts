@@ -6,7 +6,6 @@ export type HistoryWord = {
 };
 
 export type guessStateType = {
-    guessedWords: string[];
     guessHistory: HistoryWord[];
     isAlreadyGuessed: boolean;
 };

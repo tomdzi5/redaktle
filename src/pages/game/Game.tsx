@@ -4,7 +4,7 @@ import Header from './header';
 import Article from './article';
 import GuessBar from './guess-bar';
 import { useAppDispatch } from '../../app/hooks';
-import { resetGame, setGuessText } from './guess-bar/guessSlice';
+import { onToastClose, setGuessText } from './guess-bar/guessSlice';
 import { ArticleContainer, StyledGrid } from './Game.styled';
 import GuessHistory from './guess-history/GuessHistory';
 import AlreadyGuessedToast from './already-guessed-toast';
@@ -15,8 +15,8 @@ const Game = () => {
         dispatch(setGuessText(guessText));
     };
 
-    const onToastCloseHandler = () => {
-        dispatch(resetGame());
+    const handleToastClose = () => {
+        dispatch(onToastClose());
     };
 
     return (
@@ -38,7 +38,7 @@ const Game = () => {
             </ArticleContainer>
             <AlreadyGuessedToast
                 autoHideDuration={4000}
-                onToastClose={onToastCloseHandler}
+                onToastClose={handleToastClose}
             />
         </>
     );
