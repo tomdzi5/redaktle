@@ -7,6 +7,8 @@ import { useAppDispatch } from '../../app/hooks';
 import { onAlreadyGuessedToastClose, setGuessText } from './guess-bar/guessSlice';
 import { ArticleContainer, StyledGrid } from './Game.styled';
 import GuessHistory from './guess-history/GuessHistory';
+import GameWonPopup from './game-won-popup';
+import { resetWonStatus } from './article/articleSlice';
 import AlreadyGuessedToast from './already-guessed-toast';
 
 const Game = () => {
@@ -17,6 +19,10 @@ const Game = () => {
 
     const handleToastClose = () => {
         dispatch(onAlreadyGuessedToastClose());
+    };
+
+    const handleGameWonModalClose = () => {
+        dispatch(resetWonStatus());
     };
 
     return (
@@ -35,6 +41,7 @@ const Game = () => {
                     </Card>
                     <GuessHistory />
                 </StyledGrid>
+                <GameWonPopup onClose={handleGameWonModalClose} />
             </ArticleContainer>
             <AlreadyGuessedToast
                 autoHideDuration={4000}
