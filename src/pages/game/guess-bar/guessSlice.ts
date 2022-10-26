@@ -1,17 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { RootState } from '../../../app/store';
-import { guessStateType } from '../../../types/guessStateType';
+import { guessStateType, HistoryWord } from '../../../types/guessStateType';
 import { POLISH_COMMON_WORDS } from '../../../utils/constants';
 
-const MOCK_HISTORY = [
-    {
-        value: '1',
-        id: 'id1',
-        order: '1',
-        hits: 2,
-    },
-];
+const MOCK_HISTORY: HistoryWord[] = [];
 
 const initialState: guessStateType = {
     guessHistory: MOCK_HISTORY,
@@ -23,11 +16,11 @@ export const guessSlice = createSlice({
     initialState,
     reducers: {
         setGuessText: (state, action: PayloadAction<string>) => {
-            const guessedWord = action.payload;
+            const guessedWord = action.payload.toLowerCase();
             const updatedGuessWordsArray = [
                 ...state.guessHistory,
                 {
-                    value: guessedWord,
+                    value: guessedWord.toLowerCase(),
                     id: '0',
                     order: '0',
                     hits: 1,
@@ -35,9 +28,9 @@ export const guessSlice = createSlice({
             ];
 
             const isAlreadyGuessed =
-                !!state.guessHistory.find(
-                    ({ value }) => value === action.payload
-                ) || POLISH_COMMON_WORDS.includes(action.payload);
+                state.guessHistory.some(
+                    ({ value }) => value.toLowerCase() === guessedWord
+                ) || POLISH_COMMON_WORDS.includes(guessedWord);
 
             return {
                 guessHistory: isAlreadyGuessed
@@ -46,7 +39,7 @@ export const guessSlice = createSlice({
                 isAlreadyGuessed,
             };
         },
-        onToastClose: (state) => {
+        onAlreadyGuessedToastClose: (state) => {
             state.isAlreadyGuessed = false;
         },
     },
@@ -54,6 +47,6 @@ export const guessSlice = createSlice({
 
 export const selectGuess = (state: RootState) => state.guess;
 
-export const { setGuessText, onToastClose } = guessSlice.actions;
+export const { setGuessText, onAlreadyGuessedToastClose } = guessSlice.actions;
 
 export default guessSlice.reducer;
