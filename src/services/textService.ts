@@ -11,8 +11,8 @@ export const textToArray = (text: string) => {
 export const createWordsToGuessObjects = (words: string[]) => {
     return words.map((word) => {
         const isSpaceChar = word === ' ';
-        const isCommonWord = POLISH_COMMON_WORDS.includes(word);
-        const isSpecialChar = PUNCTUATION_REGEX.test(word);
+        const isCommonWord = POLISH_COMMON_WORDS.includes(word.toLowerCase());
+        const isSpecialChar = PUNCTUATION_REGEX.test(word.toLowerCase());
 
         return {
             word,
