@@ -31,6 +31,13 @@ const createGuessValidatedWord = (
     };
 };
 
+const revealWord = (word: string): WordToGuess => {
+    return {
+        word,
+        isVisible: true,
+    }
+}
+
 export const getArticle = createAsyncThunk('game/getArticle', async () => {
     const response = await fetchArticle();
     return response.data;
@@ -40,7 +47,7 @@ export const articleSlice = createSlice({
     name: 'article',
     initialState,
     reducers: {
-        handleGameWonModalClose: (state) => {
+        resetWonStatus: (state) => {
             state.isGameWon = false;
         },
     },
@@ -71,23 +78,25 @@ export const articleSlice = createSlice({
                     createGuessValidatedWord(wordToGuess, guess)
                 );
 
+                const isGameWon = titleArray.every(({ isVisible }) => isVisible);
+
                 const textArray = state.data.text.map((wordToGuess) =>
-                    createGuessValidatedWord(wordToGuess, guess)
+                    isGameWon ? revealWord(wordToGuess.word) : createGuessValidatedWord(wordToGuess, guess)
                 );
 
                 return {
+                    isGameWon,
                     data: {
                         title: titleArray,
                         text: textArray,
                     },
-                    isGameWon: titleArray.every(({ isVisible }) => isVisible),
                     status: LOADING_STATUS.IDLE,
                 };
             });
     },
 });
 
-export const { handleGameWonModalClose } = articleSlice.actions;
+export const { resetWonStatus } = articleSlice.actions;
 
 export const selectArticle = (state: RootState) => state.article;
 
