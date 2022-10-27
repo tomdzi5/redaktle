@@ -13,5 +13,6 @@ export type ArticleSliceType = {
         title: WordToGuess[];
         text: WordToGuess[];
     };
+    isGameWon: boolean;
     status: string;
 };

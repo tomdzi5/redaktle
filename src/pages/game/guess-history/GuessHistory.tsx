@@ -10,10 +10,10 @@ import {
 
 import { HeaderCell, StyledCard } from './GuessHistory.styled';
 import { useAppSelector } from '../../../app/hooks';
-import { selectGuessHistory } from './guessHistorySlice';
+import { selectGuess } from '../guess-bar/guessSlice';
 
 const GuessHistory = () => {
-    const guessHistory = useAppSelector(selectGuessHistory);
+    const { guessHistory } = useAppSelector(selectGuess);
 
     return (
         <StyledCard
@@ -38,9 +38,9 @@ const GuessHistory = () => {
                             </HeaderCell>
                         </TableRow>
                     </TableHead>
-                    {guessHistory.words && (
+                    {guessHistory && (
                         <TableBody>
-                            {guessHistory.words.map((word) => (
+                            {guessHistory.map((word) => (
                                 <TableRow
                                     key={word.id}
                                     sx={{

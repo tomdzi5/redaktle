@@ -1,19 +1,32 @@
+import { useRef } from 'react';
+
 import { Card } from '@mui/material';
 
 import Header from './header';
 import Article from './article';
 import GuessBar from './guess-bar';
-import { useAppDispatch } from '../../app/hooks';
-import { setGuessText } from './guess-bar/guessSlice';
-import { ArticleContainer, StyledGrid } from './Game.styled';
 import GuessHistory from './guess-history/GuessHistory';
-import { useRef } from 'react';
+import GameWonPopup from './game-won-popup';
+import AlreadyGuessedToast from './already-guessed-toast';
+
+import { useAppDispatch } from '../../app/hooks';
+import { onAlreadyGuessedToastClose, setGuessText } from './guess-bar/guessSlice';
+import { ArticleContainer, StyledGrid } from './Game.styled';
+import { resetWonStatus } from './article/articleSlice';
 
 const Game = () => {
     const articleCartRef = useRef<HTMLDivElement>(null);
     const dispatch = useAppDispatch();
     const handleGuess = (guessText: string): void => {
         dispatch(setGuessText(guessText));
+    };
+
+    const handleToastClose = () => {
+        dispatch(onAlreadyGuessedToastClose());
+    };
+
+    const handleGameWonModalClose = () => {
+        dispatch(resetWonStatus());
     };
 
     const onBackToTopHandler = () => {
@@ -49,7 +62,12 @@ const Game = () => {
                     </Card>
                     <GuessHistory />
                 </StyledGrid>
+                <GameWonPopup onClose={handleGameWonModalClose} />
             </ArticleContainer>
+            <AlreadyGuessedToast
+                autoHideDuration={4000}
+                onToastClose={handleToastClose}
+            />
         </>
     );
 };

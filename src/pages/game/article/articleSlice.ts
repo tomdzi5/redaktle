@@ -10,6 +10,15 @@ import {
 import { ArticleSliceType, WordToGuess } from '../../../types/article';
 import { setGuessText } from '../guess-bar/guessSlice';
 
+const initialState: ArticleSliceType = {
+    data: {
+        title: [],
+        text: [],
+    },
+    isGameWon: false,
+    status: LOADING_STATUS.IDLE,
+};
+
 const createGuessValidatedWord = (
     { word, isVisible }: WordToGuess,
     guess: string
@@ -22,13 +31,12 @@ const createGuessValidatedWord = (
     };
 };
 
-const initialState: ArticleSliceType = {
-    data: {
-        title: [],
-        text: [],
-    },
-    status: LOADING_STATUS.IDLE,
-};
+const revealWord = (word: string): WordToGuess => {
+    return {
+        word,
+        isVisible: true,
+    }
+}
 
 export const getArticle = createAsyncThunk('game/getArticle', async () => {
     const response = await fetchArticle();
@@ -38,7 +46,11 @@ export const getArticle = createAsyncThunk('game/getArticle', async () => {
 export const articleSlice = createSlice({
     name: 'article',
     initialState,
-    reducers: {},
+    reducers: {
+        resetWonStatus: (state) => {
+            state.isGameWon = false;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getArticle.pending, (state) => {
@@ -66,17 +78,25 @@ export const articleSlice = createSlice({
                     createGuessValidatedWord(wordToGuess, guess)
                 );
 
+                const isGameWon = titleArray.every(({ isVisible }) => isVisible);
+
                 const textArray = state.data.text.map((wordToGuess) =>
-                    createGuessValidatedWord(wordToGuess, guess)
+                    isGameWon ? revealWord(wordToGuess.word) : createGuessValidatedWord(wordToGuess, guess)
                 );
 
-                state.data = {
-                    title: titleArray,
-                    text: textArray,
+                return {
+                    isGameWon,
+                    data: {
+                        title: titleArray,
+                        text: textArray,
+                    },
+                    status: LOADING_STATUS.IDLE,
                 };
             });
     },
 });
+
+export const { resetWonStatus } = articleSlice.actions;
 
 export const selectArticle = (state: RootState) => state.article;
 
