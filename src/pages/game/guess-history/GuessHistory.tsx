@@ -10,10 +10,10 @@ import {
 
 import { HeaderCell, StyledCard } from './GuessHistory.styled';
 import { useAppSelector } from '../../../app/hooks';
-import { selectGuess } from '../guess-bar/guessSlice';
+import { selectGuessHistoryWithHits } from '../guess-bar/guessSlice';
 
 const GuessHistory = () => {
-    const { guessHistory } = useAppSelector(selectGuess);
+    const guessHistory = useAppSelector(selectGuessHistoryWithHits);
 
     return (
         <StyledCard

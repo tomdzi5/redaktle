@@ -20,3 +20,5 @@ export const createWordsToGuessObjects = (words: string[]) => {
         };
     });
 };
+
+export const areWordsEqual = (word1: string, word2: string) => word1.toLowerCase() === word2.toLowerCase();
