@@ -4,6 +4,7 @@ import { fetchArticle } from '../../../services/apiService';
 import { LOADING_STATUS } from '../../../utils/constants';
 import { RootState } from '../../../app/store';
 import {
+    areWordsEqual,
     createWordsToGuessObjects,
     textToArray,
 } from '../../../services/textService';
@@ -23,8 +24,8 @@ const createGuessValidatedWord = (
     { word, isVisible }: WordToGuess,
     guess: string
 ): WordToGuess => {
-    const isWordGuessed =
-        word.toLocaleLowerCase() === guess.toLocaleLowerCase();
+    const isWordGuessed = areWordsEqual(word, guess);
+
     return {
         word,
         isVisible: isVisible || isWordGuessed,

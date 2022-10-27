@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { RootState } from '../../../app/store';
-import { guessStateType, HistoryWord } from '../../../types/guessStateType';
+import { guessStateType } from '../../../types/guessStateType';
 import { POLISH_COMMON_WORDS } from '../../../utils/constants';
-
-const MOCK_HISTORY: HistoryWord[] = [];
+import { areWordsEqual } from '../../../services/textService';
+import { v4 as uuid } from 'uuid';
 
 const initialState: guessStateType = {
-    guessHistory: MOCK_HISTORY,
+    guessHistory: [],
     isAlreadyGuessed: false,
 };
 
@@ -21,15 +21,14 @@ export const guessSlice = createSlice({
                 ...state.guessHistory,
                 {
                     value: guessedWord.toLowerCase(),
-                    id: '0',
-                    order: '0',
-                    hits: 1,
-                }, // mock of guess object for convinience
+                    id: uuid(),
+                    order: `${state.guessHistory.length}`,
+                },
             ];
 
             const isAlreadyGuessed =
                 state.guessHistory.some(
-                    ({ value }) => value.toLowerCase() === guessedWord
+                    ({ value }) => areWordsEqual(value, guessedWord)
                 ) || POLISH_COMMON_WORDS.includes(guessedWord);
 
             return {
@@ -46,6 +45,15 @@ export const guessSlice = createSlice({
 });
 
 export const selectGuess = (state: RootState) => state.guess;
+
+export const selectGuessHistoryWithHits = (state: RootState) => {
+    return state.guess.guessHistory.map((guess) => {
+        return {
+            ...guess,
+            hits: state.article.data.text.filter(({ word }) => areWordsEqual(word, guess.value)).length
+        }
+    })
+}
 
 export const { setGuessText, onAlreadyGuessedToastClose } = guessSlice.actions;
 
