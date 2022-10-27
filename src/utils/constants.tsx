@@ -7,7 +7,16 @@ export const LOADING_STATUS = {
 export const MODALS_CONTENT = {
     info: {
         title: 'Information',
-        content: <p>Information modal content</p>,
+        content: <div>
+            <p>Redaktle.pl is a daily browser game where the user tries to determine the subject of a random obfuscated Wikipedia article.</p>
+
+            <p><b>How to Play</b></p>
+            <ul>
+                <li>Type a word into the input box and press Enter or the Guess button.</li>
+                <li>All occurrences of that word will become unredacted in the article body.</li>
+                <li>To win, figure out the title or subject of the article.</li>
+            </ul>
+        </div>,
     },
     stats: {
         title: 'Statistics',
