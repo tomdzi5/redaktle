@@ -8,9 +8,10 @@ import { GuessInputField, StyledFooter } from './GuessBar.styled';
 
 type GuessBarProps = {
     onGuess: (guessText: string) => void;
+    onBackToTop: () => void;
 };
 
-const GuessBar = ({ onGuess }: GuessBarProps) => {
+const GuessBar = ({ onGuess, onBackToTop }: GuessBarProps) => {
     const [guessText, setGuessText] = useState('');
     const handleGuess = (event: React.SyntheticEvent) => {
         event.preventDefault();
@@ -37,7 +38,7 @@ const GuessBar = ({ onGuess }: GuessBarProps) => {
                 >
                     <Grid item xs={12}>
                         <form onSubmit={handleGuess}>
-                            <MainButton>Top</MainButton>
+                            <MainButton onClick={onBackToTop}>Top</MainButton>
                             <GuessInputField
                                 value={guessText}
                                 onChange={(event) =>
