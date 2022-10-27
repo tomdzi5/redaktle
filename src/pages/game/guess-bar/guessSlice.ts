@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { v4 as uuid } from 'uuid';
 
 import { RootState } from '../../../app/store';
 import { guessStateType } from '../../../types/guessStateType';
 import { POLISH_COMMON_WORDS } from '../../../utils/constants';
 import { areWordsEqual } from '../../../services/textService';
-import { v4 as uuid } from 'uuid';
 
 const initialState: guessStateType = {
     guessHistory: [],
