@@ -1,7 +1,7 @@
 {
   "name": "redactle-pl",
   "version": "0.1.0",
-  "homepage": "https://TomaszDziedzicITA.github.io/redactlePL",
+  "homepage": "https://tomdzi5.github.io/redaktle",
   "private": true,
   "dependencies": {
     "@mui/icons-material": "^5.10.6",
