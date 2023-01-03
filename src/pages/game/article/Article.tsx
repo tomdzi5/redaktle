@@ -11,11 +11,9 @@ import Word from './Word';
 const Article = () => {
     const article = useAppSelector(selectArticle);
     const dispatch = useAppDispatch();
-
     useEffect(() => {
         dispatch(getArticle());
     }, []);
-
     return (
         <CardContent sx={{ m: 2 }}>
             {article.status === LOADING_STATUS.IDLE && (

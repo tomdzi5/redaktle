@@ -17,6 +17,7 @@ import { resetWonStatus } from './article/articleSlice';
 const Game = () => {
     const articleCartRef = useRef<HTMLDivElement>(null);
     const dispatch = useAppDispatch();
+
     const handleGuess = (guessText: string): void => {
         dispatch(setGuessText(guessText));
     };
