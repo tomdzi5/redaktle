@@ -41,7 +41,11 @@ const revealWord = (word: string): WordToGuess => {
 
 export const getArticle = createAsyncThunk('game/getArticle', async () => {
     const response = await fetchArticle();
-    return response.data;
+
+    return {
+        title: response.title,
+        text: response.extract,
+    };
 });
 
 export const articleSlice = createSlice({
